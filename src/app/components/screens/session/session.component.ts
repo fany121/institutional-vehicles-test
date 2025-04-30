@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, ReactiveFormsModule, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
-// Mis clases.
+// // Mis clases.
 
-import { TypeToast } from '../../../enums/typeToast';
+// import { TypeToast } from '../../../enums/typeToast';
 
-import { Response } from '../../../interfaces/response';
+// import { Response } from '../../../interfaces/response';
 
-import { GlobalService } from '../../../services/global/global.service';
-import { SessionService } from '../../../services/session/session.service';
+// import { GlobalService } from '../../../services/global/global.service';
+// import { SessionService } from '../../../services/session/session.service';
 
 @Component({
   selector: 'app-session',
@@ -24,7 +24,7 @@ export class SessionComponent {
 
   public isLoading: boolean = false;
   public form: FormGroup;
-  public year: number;
+  // public year: number;
 
   /**
    * 
@@ -37,8 +37,8 @@ export class SessionComponent {
    * 
    */
   public constructor(
-    private _globalService: GlobalService, 
-    private _sessionService: SessionService, 
+    // private _globalService: GlobalService, 
+    // private _sessionService: SessionService, 
     private _router: Router, 
     private _formBuilder: FormBuilder
   ) {
@@ -46,11 +46,11 @@ export class SessionComponent {
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
-    this.year = this._globalService.getYear();
+    // this.year = this._globalService.getYear();
 
-    if (_sessionService.getCurrentUser()) {
-      _router.navigate(['/panel']);
-    }
+    // if (_sessionService.getCurrentUser()) {
+    //   _router.navigate(['/panel']);
+    // }
   }
 
   /**
@@ -62,53 +62,53 @@ export class SessionComponent {
    * 
    */
   public login(): void {
-    this.isLoading = true;
+    // this.isLoading = true;
 
-    if (this.form.valid) {
-      this._sessionService.login({
-        id_user: 0,
-        full_name: '',
-        username: this.form.get('username')!.value,
-        password: this.form.get('password')!.value,
-        password_old: '',
-        email: '',
-        date_created: '',
-        hash_username: '',
-        hash_password: '',
-        state: '',
-        role: '',
-        created_by: '',
-        id_state: 0,
-        id_role: 0,
-        id_created_by: 0
-      }).subscribe({
-        next: (value: Response) => {
-          if (value.code == 202) {
-            this._sessionService.setCurrentUser(value.data);
-            this._router.navigate(['/panel']);
-            this._globalService.showToast(this.title, 'Inicio de sesión exitoso.', TypeToast.SUCCESS, 'checkmark-circle');
-          } else if (value.code == 401) {
-            this.isLoading = false;
-            this._globalService.showToast(this.title, 'Usuario o contraseña incorreto, intente de nuevo.', TypeToast.DANGER, 'finger-print');
-          } else {
-            this.isLoading = false;
-            this._globalService.showToast(this.title, 'Ha ocurrido un error.', TypeToast.DANGER, 'code-slash');
-          }
-        },
-        error: (error: any) => {
-          this.isLoading = false;
-          this._globalService.showToast(this.title, 'Ha ocurrido un error.', TypeToast.DANGER, 'code-slash');
-        }
-      });
-    } else {
-      Object.keys(this.form.controls).forEach((field: string) => {
-        const control: AbstractControl<any, any> | null = this.form.get<string>(field);
-        if (control && control.invalid) control.markAsTouched({ onlySelf: true });
-      });
+    // if (this.form.valid) {
+    //   this._sessionService.login({
+    //     id_user: 0,
+    //     full_name: '',
+    //     username: this.form.get('username')!.value,
+    //     password: this.form.get('password')!.value,
+    //     password_old: '',
+    //     email: '',
+    //     date_created: '',
+    //     hash_username: '',
+    //     hash_password: '',
+    //     state: '',
+    //     role: '',
+    //     created_by: '',
+    //     id_state: 0,
+    //     id_role: 0,
+    //     id_created_by: 0
+    //   }).subscribe({
+    //     next: (value: Response) => {
+    //       if (value.code == 202) {
+    //         this._sessionService.setCurrentUser(value.data);
+    //         this._router.navigate(['/panel']);
+    //         this._globalService.showToast(this.title, 'Inicio de sesión exitoso.', TypeToast.SUCCESS, 'checkmark-circle');
+    //       } else if (value.code == 401) {
+    //         this.isLoading = false;
+    //         this._globalService.showToast(this.title, 'Usuario o contraseña incorreto, intente de nuevo.', TypeToast.DANGER, 'finger-print');
+    //       } else {
+    //         this.isLoading = false;
+    //         this._globalService.showToast(this.title, 'Ha ocurrido un error.', TypeToast.DANGER, 'code-slash');
+    //       }
+    //     },
+    //     error: (error: any) => {
+    //       this.isLoading = false;
+    //       this._globalService.showToast(this.title, 'Ha ocurrido un error.', TypeToast.DANGER, 'code-slash');
+    //     }
+    //   });
+    // } else {
+    //   Object.keys(this.form.controls).forEach((field: string) => {
+    //     const control: AbstractControl<any, any> | null = this.form.get<string>(field);
+    //     if (control && control.invalid) control.markAsTouched({ onlySelf: true });
+    //   });
 
-      this.isLoading = false;
-      this._globalService.showToast(this.title, 'Formulario incompleto.', TypeToast.DANGER, 'code-slash');
-    }
+    //   this.isLoading = false;
+    //   this._globalService.showToast(this.title, 'Formulario incompleto.', TypeToast.DANGER, 'code-slash');
+    // }
   }
 
 }
