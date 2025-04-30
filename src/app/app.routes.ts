@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
-
+import { SessionComponent } from './components/screens/session/session.component';
 // Mis clases.
 
 // import { authenticationGuard, authenticationGuardChild } from './guardians/authentication/authentication.guard';
 // import { roleAdministratorGuard } from './guardians/roles/role-administrator/role-administrator.guard';
 // import { roleTechnicianGuard } from './guardians/roles/role-technician/role-technician.guard';
 
-import { SessionComponent } from './components/screens/session/session.component';
+
 // import { PanelComponent } from './components/screens/panel/panel.component';
 // import { StatisticsComponent } from './components/screens/statistics/statistics.component';
 // import { ListTicketsComponent } from './components/screens/tickets/list-tickets/list-tickets.component';
@@ -17,7 +17,10 @@ import { SessionComponent } from './components/screens/session/session.component
 // import { SupportComponent } from './components/screens/support/support.component';
 
 export const routes: Routes = [
+
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: SessionComponent },
+    { path: '**', redirectTo: 'login' }
     // { 
     //     path: 'panel', 
     //     component: PanelComponent,
@@ -41,6 +44,5 @@ export const routes: Routes = [
     //         { path: 'statistics', component: StatisticsComponent, canActivate: [roleAdministratorGuard] }
     //     ]
     // },
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path: '**', redirectTo: '/login', pathMatch: 'full' },
+    
 ];

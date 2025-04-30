@@ -1,37 +1,39 @@
-<!-- Contenedor del Formulario -->
 <div class="start-content">
     <div class="forms-container">
-        <div class="signin-signup">
-            <!-- Formulario -->
-            <form class="login" id="login" [formGroup]="form" (ngSubmit)="login()">
-                <!-- Logo y Titulo -->
-                <div class="imgs"> 
-                    <img src="images/SITRB.svg">  
-                </div>
-                <h2 class="title">Iniciar Sesión</h2>
-                <div class="box_container">
-                    <!-- Textbox de usuario -->
-                    <div class="box_style">
-                        <i class="fa-solid fa-user primary"></i>
-                        <input type="text" formControlName="username" maxlength="50" autocomplete="off" placeholder="Usuario" required>
-                    </div>
-                    <!-- Textbox de contraseña -->
-                    <div class="box_style">
-                        <i class="fa-solid fa-lock tertiary"></i>
-                        <input type="password" formControlName="password" maxlength="30" autocomplete="off" placeholder="Contraseña" required>
-                    </div>
-                </div>
-                <!-- Submit button -->
-                <div class="options">
-                    <button type="submit">Ingresar</button>
-                </div>
-            </form>
-        </div>
+      <div class="signin-signup">
+        <!-- Formulario -->
+        <form class="login" [formGroup]="form" (ngSubmit)="login()">
+          <!-- Logo y Titulo -->
+          <div class="imgs">
+            <img src="images/SITRB.svg" alt="Logo">
+          </div>
+          <h2 class="title">Iniciar Sesión</h2>
+  
+          <div class="box_container">
+            <!-- Usuario -->
+            <div class="box_style">
+              <i class="fa-solid fa-user primary"></i>
+              <input type="text" formControlName="username" maxlength="50" autocomplete="off" placeholder="Usuario">
+            </div>
+  
+            <!-- Contraseña -->
+            <div class="box_style">
+              <i class="fa-solid fa-lock tertiary"></i>
+              <input type="password" formControlName="password" maxlength="30" autocomplete="off" placeholder="Contraseña">
+            </div>
+          </div>
+  
+          <!-- Botón -->
+          <div class="options">
+            <button type="submit">Ingresar</button>
+          </div>
+        </form>
+      </div>
     </div>
-
+  
     <!-- Footer -->
     <footer>
-        <!-- <span>© SIT {{ year }}</span> -->
-         <span>SIT 2025</span>
+      <span>SIT 2025</span>
     </footer>
-</div>
+  </div>
+  
