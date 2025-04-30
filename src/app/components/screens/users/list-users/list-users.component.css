@@ -1,0 +1,1178 @@
+::-webkit-scrollbar {
+    width: 15px;
+    height: 10px;
+}
+
+.content
+{
+    padding: 0px !important;
+}
+
+.container
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    transition: all .4s ease-in-out;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+}
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+.container.blur
+{
+    filter: blur(3px);
+}
+
+.loader-pd
+{
+    position: absolute;
+    display: none;
+}
+
+.loader-pd.load
+{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-pd.load::before
+{
+    content: '';
+    position: absolute;
+    display: flex;
+    width: calc(100%);
+    height: calc(100%);
+    top: 0;
+    left: 0;
+    opacity: .7;
+    z-index: 2000;
+    background-image: url("https://sit.gob.hn/proyectos/assets/img/loader 1.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 150px 150px;
+}
+
+.container .header
+{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    gap: 20px;
+}
+
+.container .header .logo
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    max-width: 50%;
+    gap: 20px;
+}
+
+.container .header img
+{
+    max-width: 90px;
+}
+
+.container .header h1
+{
+    width: 100%;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--black);
+    margin: auto;
+    white-space: nowrap;
+    padding: 11px 0px 0px 20px;
+}
+
+.container .card
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: none;
+    height: 100px;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 15px;
+    background: white;
+    box-shadow: var(--shadow);
+    transition: all .5s ease-in-out;
+    cursor: context-menu;
+}
+
+.container .card.header
+{
+    width: 40%;
+    max-width: 400px;
+}
+
+.container .card.selected
+{
+    box-shadow: 0 7px 25px rgba(0,0,0,0.7);
+}
+
+.container .card.block
+{
+    opacity: .5;
+    pointer-events: none;
+}
+
+.container .card:hover
+{
+    animation: hover 1s ease-in-out;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.5);
+}
+
+.container .card .icon
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    transition: all .7s ease-in-out;
+}
+
+.container .card .icon.red
+{
+    color: var(--sit3);
+}
+
+.container .card .icon.blue
+{
+    color: var(--sit1);
+}
+
+.container .card .icon.grey
+{
+    color: var(--sit2);
+}
+
+.container .card .icon i
+{
+    width: 100%;
+    font-size: 45px;
+    text-align: center;
+    transition: all .7s ease-in-out;
+}
+
+.container .card .icon img
+{
+    width: 100%;
+    height: 100%;
+}
+
+.container .card:hover .icon.spin
+{
+    animation: spin 1.5s linear infinite;
+}
+
+.container .card:hover .icon.shake
+{
+    animation: shake 1.5s ease infinite;
+}
+
+.container .card:hover .icon.bounce
+{
+    animation: bounce 1.5s ease infinite;
+}
+
+.container .card:hover .icon.bounceL
+{
+    animation: bounceL 2.8s ease infinite;
+}
+
+.container .card:hover .icon.pulse
+{
+    animation: pulse 1.3s ease-in-out infinite alternate;
+}
+
+.container .card .text
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+.container .card .text div
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 50%;
+}
+
+.container .card .text .data
+{
+    font-size: 24px;
+    font-weight: 600;
+    color: black;
+}
+
+.container .card .text .title
+{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--black);
+}
+
+.container .card p.data
+{
+    position: relative;
+    font-size: 26px;
+    font-weight: 600;
+    height: 20px;
+    padding-top: 5px;
+}
+
+.container .filters
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    background: none;
+}
+
+.container .filters .filter-header
+{
+    position: relative;
+    display: none;
+    width: 100%;
+    height: auto;
+}
+
+.container .filters .filter-header hr
+{
+    margin: auto;
+    height: 0px;
+    width: 30%;
+    border: none
+}
+
+.container .filters .row
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.container .filters .element-zone
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.container .filters .element
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    border-radius: 15px;
+    background: var(--white);
+    box-shadow: var(--shadow);
+}
+
+.container .filters .element.max
+{
+    width: 100%;
+}
+
+.container .filters .element.min
+{
+    width: 35%;
+}
+
+.container .filters .element.add
+{
+    flex-direction: row;
+    width: 15%;
+    min-width: 150px;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.container .filters .element.inform
+{
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    min-width: 180px;
+    gap: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.container .filters .element.search
+{
+    flex-direction: row;
+    width: 40%;
+    min-width: 200px;
+    max-width: 500px;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.container .filters .element p
+{
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--black);
+    margin: auto;
+}
+
+.container .filters .element.add .icon,
+.container .filters .element.inform .icon
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background: var(--sit3);
+    color: var(--white);
+    border-radius: 50%;
+}
+
+.container .filters .element.inform .icon
+{
+    background: var(--white);
+    color: var(--sit1);
+}
+
+.container .filters .element.add .icon i,
+.container .filters .element.inform .icon i
+{
+    font-size: 22px;
+}
+
+.container .filters .element.search .icon i
+{
+    color: var(--black);
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.container .filters .element.add p,
+.container .filters .element.inform p
+{
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--sit3);
+    margin: unset;
+    padding-top: 0;
+}
+
+.container .filters .element.inform p
+{
+    color: var(--sit1);
+}
+
+.container .filters .element.search input
+{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--black);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.container .table-body
+{
+    position: relative;
+    width: 100%;
+    height: calc(100% - 0px) !important;
+    max-height: calc(100% - 0px) !important;
+}
+
+.container .table
+{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    background: white;
+    box-shadow: var(--shadow);
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.container .table table
+{
+    border-collapse: collapse;
+    width: 100%;
+    position: relative;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container .table table thead
+{
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    background: var(--sit2);
+    text-align: left;
+    height: 40px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    width: 2570px;
+    flex: 0 1 57px;
+    display: flex;
+}
+
+.container .table table thead tr
+{
+    display: flex;
+    width: 2570px;
+    justify-content: space-around;
+}
+
+.container .table table thead th:last-child
+{
+    border-top-right-radius: 20px;
+}
+
+.container .table table thead th
+{
+    min-width: 120px;
+    padding: 15px;
+    text-align: center;
+    align-self: center;
+}
+
+.container .table table thead th.text
+{
+    width: 500px;
+    min-width: 500px;
+}
+
+.container .table table thead th.text.t
+{
+    width: 300%;
+}
+
+.container .table table thead th.text.min
+{
+    width: 350px;
+    min-width: 350px;
+}
+
+.container .table table thead th.num
+{
+    width: 230px;
+    min-width: 230px;
+}
+
+.container .table table thead th.index
+{
+    width: 100px;
+    min-width: 100px;
+}
+
+.container .table table thead th.actions
+{
+    width: 150px;
+    min-width: 150px;
+}
+
+.container .table table tbody
+{
+    display: flex;
+    width: 2570px;
+    flex-direction: column;
+    min-width: 500px;
+    height: calc(100% - 57px);
+    overflow-y: auto;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+}
+
+.container .table table tbody::-webkit-scrollbar
+{
+    display: none;
+}
+
+.container .table table tbody tr
+{
+    display: flex;
+    width: 2570px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container .table table tbody tr td
+{
+    padding: 15px;
+    min-width: 120px;
+    height: 55px;
+    min-height: 55px;
+    white-space: nowrap;
+    font-size:  16px;
+    font-weight: 500;
+    overflow: auto;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+    cursor: grab;
+}
+
+.container .table table tbody tr td .point
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 50px;
+    min-width: 50px;
+    border: 5px solid var(--white);
+    border-radius: 50%;
+    opacity: .8;
+}
+
+.container .table table tbody tr td .point.green{
+    background: #52BE80;
+}
+
+.container .table table tbody tr td .point.yellow{
+    background: #F4D03F;
+}
+
+.container .table table tbody tr td .point.red{
+    background: #E74C3C;
+}
+
+.container .table table tbody tr td .img
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+}
+
+.container .table table tbody tr td .img img
+{
+    width: 100%;
+    height: 100%;
+}
+
+.container .table table tbody tr:hover td .img img
+{
+    animation: pulse 1.3s ease-in-out infinite alternate;
+}
+
+.container .table table tbody tr td.text
+{
+    width: 500px;
+    min-width: 500px;
+}
+
+.container .table table tbody tr td.text.t
+{
+    width: 300%;
+}
+
+.container .table table tbody tr td.text.min
+{
+    width: 350px;
+    min-width: 350px;
+}
+
+.container .table table tbody tr td.num.min
+{
+    font-weight: 500;
+}
+
+.container .table table tbody tr td.num
+{
+    width: 230px;
+    min-width: 230px;
+    font-weight: 500;
+}
+
+.container .table table tbody tr td.index
+{
+    width: 100px;
+    min-width: 100px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.container .table table tbody tr td.actions
+{
+    width: 150px;
+    min-width: 150px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.container .table table tbody td.index.actions
+{
+    padding-top: 0px;
+    padding-bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .table table tbody tr td.center
+{
+    text-align: center;
+}
+
+.container .table table tbody tr td.left
+{
+    text-align: left;
+}
+
+.container .table table tbody tr td.right
+{
+    text-align: right;
+
+}
+  
+.container .table table tbody tr td::-webkit-scrollbar
+{
+    display: none;
+}
+
+.container .table table tbody tr:nth-child(odd){
+    background: #f7f5f5;
+}
+
+.container .table table tbody tr:nth-child(even){
+    background: #E5E3E4;
+}
+
+.container .table table tbody tr:last-child td:nth-child(1)
+{
+    border-bottom-left-radius: 20px;
+}
+
+.container .table table tbody tr:last-child td:last-child
+{
+    border-bottom-right-radius: 20px;
+}
+
+.container .table::-webkit-scrollbar-track
+{
+    background: '#E5E3E4';
+    border-radius: 10px;
+}
+
+.container .table::-webkit-scrollbar-thumb
+{
+    border-color: '#E5E3E4';
+    background: var(--sit3);
+    border-radius: 10px;
+}
+
+.container .table::-webkit-scrollbar-button
+{
+    width: calc(90%);
+}
+
+.scrollable {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.container .table table .option
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .table table .option .option-icon
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: var(--sit1);
+    cursor: pointer;
+    transition: all 0.6s ease-out;
+    z-index: 5;
+}
+
+.container .table table .option.active .option-icon
+{
+    transform: rotate(90deg);
+}
+
+.container .table table .option .option-icon i
+{
+    font-size: 25px;
+    text-align: center;
+    color: var(--white);
+}
+
+.container .table table .option .option-menu
+{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 70px;
+    z-index: 4;
+    background: #ffffff;
+    transition: transform .5s, width .5s, height .5s, z-index .2s;
+    transition-delay: 1s, .5s, .5s, 1s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    padding: 3px;
+}
+
+.container .table table .option .option-menu .menu-icon
+{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: .25s;
+    transition-delay: .3s;
+    z-index: 2;
+}
+
+.container .table table .option .option-menu .menu-icon .icon
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    height: 35px;
+    width: 35px;
+    background: var(--gradiant-button);
+    padding: 3px;
+    cursor: pointer;
+}
+
+.container .table table .option .option-menu .menu-icon .icon i
+{
+    font-size: 20px;
+    text-align: center;
+    color: var(--white);
+}
+
+.container .table table .option.active .option-menu
+{
+    width: 190px;
+    height: 55px;
+    transform: translatex(-125px);
+    transition: transform .5s, width .5s, height .5s, z-index .2s;
+    transition-delay: 0s, .5s, .5s, .2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    z-index: 11;
+}
+
+.container .table table .option.active .option-menu .menu-icon
+{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0px);
+    transition-delay: 1s;
+}
+
+.container .table table .option.active .option-menu .menu-icon .icon
+{
+    transition: all .4s ease 0s;
+}
+
+.container .table table .option.active .option-menu .menu-icon .icon:hover
+{
+    transform: scale(1.2);
+}
+
+.container .table table .option .option-menu::before
+{
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #ffffff;
+    left: calc(50% - 8px);
+    bottom: 4px;
+    transform: rotate(45deg);
+    border-radius: 2px;
+    transition: .5s;
+    z-index: -1;
+    top: calc(50% - 8px);
+}
+
+.container .table table .option.active .option-menu::before
+{
+    transition-delay: .5s;
+    bottom: 0;
+    left: calc(100% - 11px);
+}
+
+.container .nav-zone
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    gap: 20px;
+}
+
+.container .nav-cant
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 60px;
+    border-radius: 10px;
+    background: var(--white);
+    box-shadow: var(--shadow);
+}
+
+.container .nav-cant .visible
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 7px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.container .nav-cant .visible p
+{
+    color: var(--black);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.container .nav-cant .visible i
+{
+    color: var(--black);
+    font-size: 18px;
+    transition: var(--transicion2);
+    transform: rotate(0deg);
+}
+
+.container .nav-cant.show-list .visible i
+{
+    transform: rotate(180deg);
+}
+
+.container .nav-cant .cant-list
+{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 60px;
+    height: 50px;
+    bottom: 0px;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--white);
+    box-shadow: var(--shadow);
+    transition: bottom .5s ease-in-out, opacity .5s ease-in-out;
+    animation: animate-close-menu .5s ease-in-out;
+    overflow: hidden;
+    opacity: 0;
+    z-index: 999;
+}
+
+.container .nav-cant.show-list .cant-list
+{
+    height: 170px;
+    bottom: 60px; 
+    opacity: 1;
+    animation: animate-menu .5s ease-in-out;
+}
+
+.container .nav-cant .cant-list .element
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    background: var(--white);
+    border-radius: 5px;
+    transition: var(--transicion2);
+    cursor: pointer;
+}
+
+.container .nav-cant .cant-list .element:hover
+{
+    background: var(--sit2);
+}
+
+.container .nav-cant .cant-list .element.selected,
+.container .nav-cant .cant-list .element.selected:hover
+{
+    background: var(--sit3) !important;
+}
+
+.container .nav-cant .cant-list .element p
+{
+    color: var(--black);
+    font-size: 14px;
+    font-weight: 700;
+    transition: var(--transicion2);
+}
+
+.container .nav-cant .cant-list .element:hover p,
+.container .nav-cant .cant-list .element.selected p
+{
+    color: var(--white);
+}
+
+.container .nav
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    gap: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--white);
+    box-shadow: var(--shadow);
+}
+
+.container .nav .nav-numeric
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: calc(100% - 65px);
+    gap: 10px;
+    overflow: hidden;
+}
+
+.container .nav .nav-arrow
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 62px;
+    gap: 2px;
+}
+
+.container .nav .nav-element
+{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 35px;
+    height: 30px;
+    background: var(--white);
+    border-radius: 5px;
+    transition: var(--transicion2);
+    cursor: pointer;
+}
+
+.container .nav .nav-arrow .nav-element
+{
+    min-width: 30px;
+}
+
+.container .nav .nav-element.selected
+{
+    background: var(--sit3);
+}
+
+.container .nav .nav-element.selected:hover
+{
+    background: var(--sit3);
+}
+
+.container .nav .nav-element:hover
+{
+    background: var(--sit2);
+}
+
+.container .nav .nav-arrow .nav-element:hover
+{
+    background: var(--sit3);
+}
+
+.container .nav .nav-element p
+{
+    color: var(--black);
+    font-size: 16px;
+    font-weight: 700;
+    transition: var(--transicion2);
+}
+
+.container .nav .nav-element:hover p,
+.container .nav .nav-element:hover i,
+.container .nav .nav-element.selected p
+{
+    color: var(--white);
+}
+
+.container .nav .nav-element i
+{
+    color: var(--black);
+    font-size: 24px;
+    transition: var(--transicion2);
+}
+
+@media (max-width: 1200px)
+{
+    .container .card.header
+    {
+        width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 870px)
+{
+    .container .header
+    {
+        flex-direction: column;
+        align-items: center;
+    }
+    .container .header .logo
+    {
+        max-width: 100%;
+        justify-content: center;
+    }
+    .container .card.header
+    {
+        width: 100%;
+        flex-direction: row;
+        max-width: none;
+    }
+    .container .header h1
+    {
+        font-size: 24px;
+        text-align: center;
+        padding-left: 0px;
+    }
+
+    .container .filters .element.add,
+    .container .filters .element.inform
+    {
+        width: 45px;
+        min-width: 45px;       
+        max-width: none;
+        height: 45px;  
+        padding: 0;
+        border-radius: 50%;     
+    }
+    .container .filters .element.add .icon,
+    .container .filters .element.inform .icon
+    {
+        width: 100%;
+        height: 100%;
+    }
+    .container .filters .element.add .icon i,
+    .container .filters .element.inform .icon i
+    {
+        font-size: 28px;
+    }
+    .container .filters .element.add p,
+    .container .filters .element.inform p
+    {
+        display: none;
+    }   
+
+    .container .filters .element.search
+    {
+        width: 100%;
+        max-width: none;       
+    }
+    .container .filters .element.search input
+    {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 550px)
+{
+    .container .header h1
+    {
+        font-size: 18px;
+    }
+    .container .header img
+    {
+        max-width: 60px;
+    }
+
+    .container .nav
+    {
+        width: calc(100% - 80px);
+        max-width: none;
+    }
+    .container .filters .element-zone
+    {
+        gap: 10px;
+    }
+}

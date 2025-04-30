@@ -1,0 +1,149 @@
+<div class="container">
+    <div class="header">
+        <div class="logo">
+            <h1>{{ title }}</h1>
+        </div>
+        <div class="card header">
+            <div class="icon red pulse">
+                <i class="fa-solid fa-users"></i>
+            </div>
+            <div class="text">
+                <div id="user-amount" class="data">{{ records.length }}</div>
+                <div class="title">Usuarios</div>
+            </div>
+        </div>
+    </div>
+    <div class="filters">
+        <div class="row">
+            <div class="element-zone">
+                <div class="element add" (click)="goCreate();">
+                    <div class="icon">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <p>Agregar</p>
+                </div>
+            </div>
+            <div class="element search">
+                <input type="text" [(ngModel)]="filterSearch" placeholder="Buscar por nombre o usuario" id="input-search">
+                <div class="icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <th class="index">No.</th>
+                    <th class="text min">Nombre</th>
+                    <th class="text min">Usuario</th>
+                    <th class="text min">Correo</th>
+                    <th class="text min">Estado</th>
+                    <th class="num">Rol</th>
+                    <th class="num">Creado por</th>
+                    <th class="num">Fecha de Creación</th>
+                    <th class="actions">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="scrollable">
+                <div class="table-body">
+                    <tr 
+                    *ngFor=
+                        "
+                            let user of records | 
+                            searchUsers : filterSearch | 
+                            paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage };
+                            trackBy: recognize;
+                            index as i
+                        "
+                    >
+                        <td class="index">{{ calculateIndex(i) }}</td>
+                        <td class="text min" [innerHTML]="user.full_name | highlight: filterSearch : ''"></td>
+                        <td class="text min center"><strong [innerHTML]="user.username | highlight: filterSearch : ''"></strong></td>
+                        <td class="text min center" [innerHTML]="user.email | highlight: filterSearch : ''"></td>
+                        <td class="text min center">{{ user.state }}</td>
+                        <td class="num center">{{ user.role }}</td>
+                        <td class="num center">{{ user.created_by }}</td>
+                        <td class="num center" [innerHTML]="formatDate(user.date_created)! | highlight: filterSearch : ''"></td>
+                        <td class="index actions">
+                            <div [id]="'option-' + i" class="option" (click)="toggleOptions(i)">
+                                <div class="option-icon">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                                <div class="option-menu">
+                                    <div class="menu-icon">
+                                        <div class="icon" title="Editar usuario" *appHasRole="{roles: [1]}" (click)="this.goUpdate(user)">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </div>
+                                        <div class="icon" title="Eliminar usuario" *appHasRole="{roles: [1]}" (click)="this.goDelete(user)">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </div>
+                                        <div class="icon" title="Restablecer contraseña" *appHasRole="{roles: [1]}" (click)="this.goResetPassword(user)">
+                                            <i class="fa-solid fa-key"></i>
+                                        </div>
+                                        @if (user.id_state == 0) {
+                                            <div class="icon" title="Activar usuario" *appHasRole="{roles: [1]}" (click)="this.goUpdateState(user, 1)">
+                                                <i class="fa-solid fa-unlock"></i>
+                                            </div>
+                                        } @else {
+                                            <div class="icon" title="Desactivar usuario" *appHasRole="{roles: [1]}" (click)="this.goUpdateState(user, 0)">
+                                                <i class="fa-solid fa-lock"></i>
+                                            </div>
+                                        }
+                                        <div class="icon" title="Ver usuario" *appHasRole="{roles: [1]}" (click)="this.goSee(user)">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </div>
+            </tbody>
+        </table>
+    </div>
+    <div class="nav-zone">
+        <div class="nav-cant" [ngClass]="{'show-list': isListActive}">
+            <div class="visible" (click)="togglePageMenu()">
+                <p>{{ itemsPerPage }}</p>
+                <i class="fa-solid fa-caret-down"></i> 
+            </div>
+            <div class="cant-list">
+                <div *ngFor="let limit of limits" 
+                        [ngClass]="itemsPerPage === limit ? 'element selected' : 'element'" 
+                        (click)="setItemsPerPage(limit)"> 
+                    <p>{{ limit }}</p>
+                </div>
+            </div>
+        </div>
+        <pagination-template  
+            #pagination="paginationApi"
+            (pageChange)="updatePaginatedRecords($event)"
+            (pageBoundsCorrection)="updatePaginatedRecords($event)"
+            [maxSize]="5"
+            previousLabel=""
+            nextLabel=""
+            class="nav"
+        >
+            <div class="nav-numeric">
+                <div 
+                    class="nav-element" 
+                    *ngFor="let page of pagination.pages" 
+                    [ngClass]="{selected: pagination.getCurrent() === page.value}" 
+                    (click)="pagination.setCurrent(page.value)"
+                >
+                    <p>{{ page.label }}</p>
+                </div>
+            </div>
+            <div class="nav-arrow">
+                <div class="nav-element" *ngIf="!pagination.isFirstPage()" (click)="pagination.previous()">
+                    <i class="fa-solid fa-caret-left"></i>
+                </div>
+                <div class="nav-element" *ngIf="!pagination.isLastPage()" (click)="pagination.next()">
+                    <i class="fa-solid fa-caret-right"></i>
+                </div>
+            </div>
+        </pagination-template>
+    </div>
+</div>

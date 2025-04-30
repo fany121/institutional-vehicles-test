@@ -1,1 +1,771 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import "@ng-select/ng-select/themes/default.theme.css";
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Variables de estilo */
+:root
+{
+    --white: #fff;
+    --grey: #acacac;
+    --black: #4b4b4b;
+    --auxiliar: #E1E1E1;
+
+    --sit1: #22d3ee; 
+    --sit2: #949b9c;
+    --sit3: #fb4538;
+    --sit4: #fc9c94; 
+    --sit5: #acecf4;
+  
+    --transparent1: #22d3ee1a;
+    --transparent2: #949b9c1a;
+    --transparent3: #fb45381f;
+    --white: #fff;
+    --black: #4b4b4b;
+    --gold: #f1c40f;
+    --transicion: all 1s ease-in-out;
+    --transicion2: all .5s ease-in-out;
+
+    --animation: animate-opacity 1s ease alternate infinite;
+    
+    --shadow: 0 7px 25px rgba(0,0,0,0.287);
+    --shadowPrincipal: 0 7px 25px rgba(34, 211, 238, 1);
+    --shadowSecondary: 0 7px 25px rgba(148, 155, 156, 1);
+    --shadowTertiary: 0 7px 25px rgba(251, 69, 56, 1);
+
+    --gradiant: linear-gradient(320deg, var(--transparent3), var(--transparent2));
+    --gradiant-button: linear-gradient(45deg, var(--sit1), var(--sit2));
+  
+    --title: 32px;
+    --icon: 48px;
+    --icon-text: 28px;
+    --small-icon: 18px;
+    --action-icon: 16px;
+    --font0: 20px;
+    --font1: 18px;
+    --font2: 16px;
+    --font3: 14px;
+    --font4: 12px;
+    --font5: 10px;
+  
+    --proportion1: 20px;
+    --proportion2: 10px;
+    --proportion3: 5px;
+    --proportion4: 30px;
+    --proportion5: 2px;
+    --proportion6: 3px;
+    --none-proportion: 0px;
+  
+    --normal-border: 15px;
+    --inner-border: 10px;
+    --border: 5px;
+}
+
+/* Animacion para mensaje de notificacion */
+@keyframes animate-color
+{
+    0% { color: var(--sit1); }
+    100% { color: var(--sit3); }
+}
+
+/* Animacion de busqueda */
+@keyframes animate-opacity
+{
+    0% { opacity: .4; }
+    100% { opacity: .8; }
+}
+
+/* Animacion para progreso de mensaje */
+@keyframes progress {
+    100%{
+        right: 100%;
+    }
+}
+
+body
+{
+    overflow: hidden;
+}
+body, input
+{
+    font-family: "Poppins", sans-serif;
+}
+
+.ellipsis
+{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Estilos para el contenedor padre */
+.start-content
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background: var(--gradiant-button);
+    overflow: hidden;
+}
+
+/* Estilos para los botones */
+button
+{
+    width: 200px;
+    height: 45px;
+    background: var(--transparent2);
+    color: var(--black);
+    font-size: 1rem;
+    font-weight: 700;
+    border-style: none;
+    transition: all .3s ease;
+    border-radius: var(--proportion1);
+    cursor: pointer;
+}
+
+/* Estilo cuando un boton gana foco */
+button:hover
+{
+    color: var(--white);
+    background: var(--gradiant-button);
+}
+
+.button-support:hover
+{
+    color: var(--white);
+    background: var(--gradiant);
+}
+
+/* Footer de la pagina */
+footer
+{
+    transform: translateY(-100%);
+    color: var(--white);
+    text-align: center;
+}
+
+footer span
+{
+    font-size: 12px;
+}
+
+/* Loading */
+.loading
+{
+    animation: var(--animation) !important;
+    pointer-events: none !important;
+}
+
+.loading.loader::after
+{
+    content: '';
+    position: absolute;
+    display: flex;
+    width: calc(100%);
+    height: calc(100%);
+    top: 0;
+    left: 0;
+    opacity: .7;
+    z-index: 2000;
+    background-image: url("/images/loader.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 150px 150px;
+}
+
+.color-1
+{
+    color: var(--sit1) !important;
+}
+
+.color-2
+{
+    color: var(--sit2) !important;
+}
+
+.color-3
+{
+    color: var(--sit3) !important;
+}
+
+.color-4
+{
+    color: var(--black) !important;
+}
+
+/* Mensaje de notificacion */
+.toast{
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    display: none;
+    border-radius: 12px;
+    background: #fff;
+    padding: var(--proportion1) 35px var(--proportion1) 25px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.487);
+    background-origin: border-box;
+    overflow: hidden;
+    transform: translateX(calc(100% + 30px));
+    animation: animate-color 5s linear forwards;
+    border-left: 6px solid currentColor;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+    z-index: 4000;
+}
+
+/* Se muestra mensaje */
+.toast.active{
+    transform: translateX(0%);
+}
+
+/* Contenido del mensaje */
+.toast .toast-content{
+    display: flex;
+    align-items: center;
+}
+
+/* Icono del mensaje */
+.toast-content .check{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+    min-width: 35px;
+    border-radius: 50%;
+}
+/* Estilo para icono de exito */
+.toast-content .check.nice
+{
+    background: var(--sit1);
+}
+/* Estilo para icono de error */
+.toast-content .check.error
+{
+    background-color: var(--sit3);
+}
+/* Estilo del icono */
+.toast-content .check .icon
+{
+    color: #fff;
+    width: 23px;
+    height: 23px;
+}
+/* Texto del mensaje */
+.toast-content .message{
+    display: flex;
+    flex-direction: column;
+    margin: 0 var(--proportion1);
+}
+/* Estilo de span */
+.toast .message .text{
+    font-size: 18px;
+    font-weight: 400;
+    color: #666666;
+}
+/* Estilo del titulo del mensaje */
+.toast .message .text.text-1{
+    font-weight: 600;
+    color: #333;
+}
+/* Boton para cerrar mensaje */
+.toast .close{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+.toast .close:hover{
+    opacity: 1;
+}
+
+/* Barra de progreso del mensaje */
+.toast .progress{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 6px;
+    width: 100%;
+    background: #ddd;
+}
+.toast .progress:before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background: var(--gradiant-button);
+}
+.progress.active:before{
+    animation: progress 5s linear forwards;
+}
+
+/* Media Querys */
+@media (max-width: 870px)
+{
+    /* Texto del mensaje de notificacion */
+    .toast .message .text
+    {
+        font-size: 16px;
+    }
+}
+@media (max-width: 550px)
+{
+    /* Mensaje de notificacion */
+    .toast
+    {
+        right: var(--none-proportion);
+        left: var(--none-proportion);
+        top: 15px;
+        margin: 0px 15px;
+        padding: 18px var(--proportion1) 18px 15px;
+    }
+    .toast .message .text
+    {
+        font-size: 12px;
+    }
+    .toast .close{
+        top: 5px;
+        right: 5px;
+        width: 25px;
+        height: 25px;
+        padding: 5px;
+        cursor: pointer;
+        opacity: 0.7;
+    }
+
+    /* Modal */
+    .modal-content
+    {
+        align-items: flex-end;
+    }
+    .modal-content .modal-eliminar .btn-zone
+    {
+        flex-direction: column;
+    }
+    .sidebar.close li:hover .tooltip
+    {
+        display: none !important;
+    }
+}
+
+/* Modal */
+
+.generic-modal
+{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: var(--none-proportion);
+    left: var(--none-proportion);
+    width: var(--none-proportion);
+    height: var(--none-proportion);
+    margin: auto;
+    padding: var(--none-proportion);
+    z-index: -1;
+    overflow: hidden;
+}
+
+.generic-modal.show
+{
+    width: 100%;
+    height: 100%;
+    padding: var(--proportion1);
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.generic-modal.extended
+{
+    position: unset;
+}
+
+.generic-modal.extended::before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    z-index: 1;
+}
+
+.generic-modal.extended.show
+{
+    position: fixed;
+    width: 100%;
+}
+
+.sidebar ~ .generic-modal.show
+{
+    left: 280px;
+    width: calc(100% - 280px);
+}
+
+.sidebar.close ~ .generic-modal.show
+{
+    left: 88px;
+    width: calc(100% - 88px);
+}
+
+.generic-modal .modal-body
+{
+    position: relative;
+    display: flex;
+    width: 0%;
+    max-width: var(--none-proportion);
+    height: 0%;
+    border-radius: 15px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.287);
+    z-index: 1;
+}
+
+.generic-modal.extended .modal-body
+{
+    box-shadow: none;
+}
+
+.generic-modal.show .modal-body
+{
+    width: auto;
+    max-width: 80%;
+    height: auto;
+    max-height: 90%;
+    animation: load .6s ease-in-out;
+}
+
+.generic-modal.extended.show .modal-body
+{
+    max-width: 500px;
+}
+
+.generic-modal.show.delete .modal-body
+{
+    max-width: 400px;
+}
+
+.modal-body .close
+{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -15px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1000;
+    border-radius: 50%;
+    background: var(--white);
+    box-shadow: 0 7px 25px rgba(0,0,0,0.287);
+}
+
+.modal-body .close i
+{
+    font-size: 1.3rem;
+    color: var(--sit1);
+    transform: translate(0.5px, 1px);
+}
+
+.modal-body .modal-content
+{
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 85% !important;
+    gap: 0px;
+    padding: 0 !important;
+    max-width: none !important;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+    pointer-events: all;    
+}
+.modal-body .modal-content::-webkit-scrollbar {
+    display: none;
+}
+
+.generic-modal.extended .modal-body .modal-content
+{
+    gap: var(--proportion1);
+}
+
+.modal-body .modal-content .modal-header
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    min-height: 60px;
+    padding: 0 30px;
+    gap: var(--proportion2);
+}
+
+.generic-modal.extended .modal-body .modal-content .modal-header
+{
+    min-height: auto;
+    justify-content: flex-start;
+    padding: var(--none-proportion);
+}
+
+.modal-body .modal-content .modal-header i
+{
+    font-size: 24px;
+}
+
+.modal-body .modal-content .modal-header.t2 i
+{
+    font-size: var(--icon-text);
+}
+
+.generic-modal.extended .modal-body .modal-content .modal-header i
+{
+    color: var(--sit1);
+}
+
+.modal-body .modal-content .modal-header p
+{
+    font-size: var(--font2);
+    font-weight: 600;
+}
+
+.modal-body .modal-content .modal-header.t2 p
+{
+    font-size: var(--font1);
+    font-weight: 600;
+}
+
+.modal-body .modal-content .modal-header p
+{
+    font-size: var(--font1);
+    color: var(--black);
+}
+
+.modal-body .modal-content .modal-data
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    padding: var(--proportion1);
+    width: 100%;
+    overflow: hidden;
+}
+
+.generic-modal.extended .modal-body .modal-content .modal-data
+{
+    gap: var(--proportion1);
+    padding: var(--none-proportion) var(--proportion3);
+}
+
+.modal-body .modal-content .modal-data p
+{
+    font-size: var(--font3);
+    font-weight: 500;
+}
+
+/* ng-select */
+
+ng-select {
+    width: 100%;
+}
+
+/* Paginación */
+
+.ngx-pagination 
+{
+    margin: 0px !important;
+}
+
+/* Listas virtuales */
+
+.cdk-virtual-scroll-content-wrapper {
+    height: 100% !important;
+}
+
+.modal-body .modal-content .modal-data p.info
+{
+    color: var(--black);
+    font-size: var(--font2);
+}
+
+.generic-modal.extended .modal-data .data-group
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: var(--proportion3);
+}
+
+.generic-modal.extended .modal-data .data-group .title
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    gap: var(--proportion6);
+}
+
+.generic-modal.extended .modal-data .data-group .title p
+{
+    text-align: left;
+    font-size: var(--font2);
+    font-weight: 600;
+    color: var(--black);
+}
+
+.generic-modal.extended .modal-data .data-group .title i
+{
+    font-size: var(--small-icon);
+    color: var(--black);
+}
+
+.generic-modal.extended .modal-data .data-group .data-body
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    gap: var(--proportion1);
+    padding: var(--proportion2) var(--proportion2);
+    background-color: var(--transparent2);
+    border-radius: var(--border);
+}
+
+.generic-modal.extended .modal-data .data-group .data-body p
+{
+    text-align: justify;
+    font-size: var(--font2);
+    font-weight: 500;
+    color: var(--black);
+    opacity: .9;
+}
+
+.modal-body .modal-content .modal-buttons
+{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.modal-body .modal-content .modal-buttons button:hover
+{
+    color: var(--white);
+    background: var(--sit1);
+}
+
+.ng-select
+{
+    width: 100%;
+}
+
+.ng-select.ng-select-single .ng-select-container
+{
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+}
+
+.ng-dropdown-panel 
+{
+    border-radius: var(--inner-border) !important;
+    overflow: hidden !important;
+}
+
+.ng-dropdown-panel-items::-webkit-scrollbar 
+{
+    width: 5px;
+}
+
+.ng-dropdown-panel-items::-webkit-scrollbar-track 
+{
+    background-color: unset;
+}
+
+.ng-dropdown-panel-items::-webkit-scrollbar-thumb
+{
+    border-radius: var(--border);
+    background-color: var(--grey);
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option
+{
+    color: var(--black);
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked
+{
+    background-color: var(--transparent1);
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected, .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected.ng-option-marked
+{
+    background-color: var(--sit1);
+    color: var(--white) !important;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected .ng-option-label
+{
+    font-weight: 400 !important;
+}
+
+.ng-select.ng-select-focused:not(.ng-select-opened) > .ng-select-container
+{
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.ng-select .ng-select-container .ng-value-container
+{
+    padding-left: 0px !important;
+}
+
+.ng-select .ng-select-container .ng-value-container .ng-placeholder
+{
+    color: #848484 !important;
+    font-weight: 500 !important;
+}
+
+.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value
+{
+    color: var(--black) !important;
+    font-weight: 500 !important;
+}
+
+.ng-select .ng-placeholder
+{
+    display: block !important;
+}
+
+.ng-select.ng-dirty .ng-placeholder
+{
+    display: none !important;
+}

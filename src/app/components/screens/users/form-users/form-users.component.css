@@ -1,0 +1,581 @@
+
+
+::-webkit-scrollbar {
+    width: 15px;
+    height: 10px;
+} 
+
+.content
+{
+    padding: 0px !important;
+}
+
+.container
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    gap: 20px;
+    padding: 20px;
+    transition: all .4s ease-in-out;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+}
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+.container.blur
+{
+    filter: blur(3px);
+}
+
+.container .header
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    gap: 20px;
+}
+
+.container .header .logo
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.container .header img
+{
+    max-width: 90px;
+}
+
+.container .header h1
+{
+    width: 100%;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--black);
+    margin: auto;
+    white-space: nowrap;
+    padding: 11px 0px 0px 20px;
+    text-align: center;
+}
+
+.form-container
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+    padding: 20px;
+    background: var(--white);
+    overflow-y: auto;
+}
+
+.form-container::-webkit-scrollbar 
+{
+    width: 5px;
+}
+
+.form-container::-webkit-scrollbar-track 
+{
+    background-color: unset;
+}
+
+.form-container::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    background-color: var(--sit2);
+}
+
+.container .form-title
+{
+    position: relative;
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.container .form-title p 
+{
+    color: var(--black);
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.form-container .form-body
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+    gap: 25px;
+}
+
+.form-container .form-body .row
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 20px;
+}
+
+.form-container .form-body .column
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-container .form-body .column.w100
+{
+    width: 100%;
+}
+
+.form-container .form-body .column.w90
+{
+    width: 90%;
+}
+
+.form-container .form-body .column.w80
+{
+    width: 80%;
+}
+
+.form-container .form-body .column.w70
+{
+    width: 70%;
+}
+
+.form-container .form-body .column.w60
+{
+    width: 60%;
+}
+
+.form-container .form-body .column.w50
+{
+    width: 50%;
+}
+
+.form-container .form-body .column.w40
+{
+    width: 40%;
+}
+
+.form-container .form-body .column.w30
+{
+    width: 30%;
+}
+
+.form-container .form-body .column.w25
+{
+    width: 25%;
+}
+
+.form-container .form-body .column.w20
+{
+    width: 20%;
+}
+
+.form-container .form-body .column.w10
+{
+    width: 20%;
+}
+
+.form-container .form-body .form-element
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+}
+
+.form-element .element-title
+{
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+.form-element .element-title p
+{
+    color: var(--black);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.form-element .input-field
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    gap: 10px;
+    padding: 0 20px;
+    border-radius: 15px;
+    background: var(--transparent2);
+}
+
+.form-element .input-field-text
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    /* height: 40px; */
+    gap: 10px;
+    padding: 0 20px;
+    border-radius: 15px;
+    background: var(--transparent2);
+}
+
+.form-element input
+{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--black);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.form-element textarea
+{
+    position: relative;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--black);
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 10px;
+    resize: none;
+    height: 75px;
+}
+
+.form-element i
+{
+    color: var(--sit2);
+    font-size: 24px;
+    cursor: pointer;
+    transform: scale(1);
+    transition: var(--transicion2);
+}
+
+.form-element i:active
+{
+    transform: scale(1.1);
+}
+
+.form-element span.alert
+{
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--sit3);
+}
+
+.form-element span.info
+{
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--sit1);
+}
+
+.form-element span.show
+{
+    display: block;
+}
+
+.form-element .upload-file
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    background: var(--transparent2);
+    color: var(--black);
+    cursor: pointer;
+}
+
+
+.form-element .upload p, .form-element .upload-file p
+{
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gradiant-button);
+}
+
+.form-element .upload i, .form-element .upload-file i
+{
+    font-size: 30px;
+    color: var(--sit1);
+}
+
+.form-element .upload input, .form-element .upload-file input
+{
+    display: none;
+}
+
+
+.form-element .map-zone
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    gap: 20px;
+}
+
+.form-element .map-element
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: var(--white);
+    box-shadow: var(--shadow);
+    border-radius: 15px;  
+    overflow: hidden;
+}
+
+.form-element .map
+{
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+
+.form-element .map.load::before
+{
+    content: '';
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    opacity: .7;
+    z-index: 2000;
+    background-color: var(--fhis3);
+    background-image: url("http://181.115.7.108/sistemas/assets/img/loader.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 150px 150px;
+    border-radius: 15px;
+}
+
+.form-element .upload
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 350px;
+    height: 60px;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    background: var(--transparent2);
+    color: var(--black);
+    cursor: pointer;
+}
+
+.form-element .upload-file
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    background: var(--transparent2);
+    color: var(--black);
+    cursor: pointer;
+}
+
+
+.form-element .upload p, .form-element .upload-file p
+{
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gradiant-button);
+}
+
+.form-element .upload i, .form-element .upload-file i
+{
+    font-size: 30px;
+    color: var(--sit1);
+}
+
+.form-element .upload input, .form-element .upload-file input
+{
+    display: none;
+}
+
+.button-zone
+{
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    justify-content: center;
+    gap: 20px;
+}
+
+.button-zone button 
+{
+    width: 250px;
+    height: 45px;
+    background: var(--transparent2);
+    color: var(--black);
+    font-size: 1rem;
+    font-weight: 600;
+    border-style: none;
+    transition: var(--transicion3);
+    border-radius: 15px;
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.button-zone button.block
+{
+    pointer-events: none !important;
+}
+
+.button-zone button:hover
+{
+    background: var(--sit1);
+    color: var(--white);
+}
+
+.button-zone button.back
+{
+    background: rgb(252 71 63 / 70%);
+    color: var(--white);
+}
+
+.button-zone button.back:hover
+{
+    background: rgb(252 71 63 / 85%);
+    opacity: 1;
+}
+
+@media (max-width: 1200px)
+{
+    .container .card.header
+    {
+        width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 870px)
+{
+    .container .header
+    {
+        flex-direction: column;
+        align-items: center;
+    }
+    .container .header .logo
+    {
+        max-width: 100%;
+        justify-content: center;
+    }
+    .container .card.header
+    {
+        width: 100%;
+        flex-direction: row;
+        max-width: none;
+    }
+    .container .header h1
+    {
+        font-size: 24px;
+        text-align: center;
+        padding-left: 0px;
+    }
+
+    .form-container .form-body .row
+    {
+        flex-direction: column;
+    }
+
+    .form-container .form-body .row.full
+    {
+        flex-direction: row;
+    }
+
+    .form-container .form-body .column
+    {
+        width: 100% !important;
+    }
+    
+    .form-element .map-zone
+    {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 550px)
+{
+    .container .header h1
+    {
+        font-size: 18px;
+    }
+    .container .header img
+    {
+        max-width: 60px;
+    }
+
+    .button-zone
+    {
+        justify-content: center;
+    }
+
+    .form-container .form-body .row.full
+    {
+        flex-direction: column;
+    }
+
+    .form-element .map
+    {
+        height: 300px;
+    }
+}
+
+.form-element .alert
+{
+    color: var(--sit3);
+}
