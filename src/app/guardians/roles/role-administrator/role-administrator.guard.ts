@@ -1,5 +1,26 @@
-import { CanActivateFn } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivateFn, GuardResult, MaybeAsync, Router, RouterStateSnapshot } from '@angular/router';
+import { inject } from '@angular/core';
 
-export const roleAdministratorGuard: CanActivateFn = (route, state) => {
-  return true;
+// Mis clases.
+
+import { User } from '../../../interfaces/user';
+
+import { SessionService } from '../../../services/session/session.service';
+
+export const roleAdministratorGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : MaybeAsync<GuardResult> => {
+  const user: User | undefined = inject(SessionService).getCurrentUser();
+
+  if (user) {
+    if (user.id_role == 1) {
+      return true;
+    } else {
+      inject(Router).navigate(['/panel']);
+
+      return false;
+    }
+  } else {
+    inject(Router).navigate(['/login']);
+
+    return false;
+  }
 };
