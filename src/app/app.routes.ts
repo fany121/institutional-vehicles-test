@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { SessionComponent } from './components/screens/session/session.component';
+import { PanelComponent } from './components/screens/panel/panel.component';
 // Mis clases.
 
 // import { authenticationGuard, authenticationGuardChild } from './guardians/authentication/authentication.guard';
@@ -20,6 +21,7 @@ export const routes: Routes = [
 
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: SessionComponent },
+    { path: 'panel', component: PanelComponent },
     { path: '**', redirectTo: 'login' }
     // { 
     //     path: 'panel', 

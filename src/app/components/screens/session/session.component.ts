@@ -3,6 +3,16 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
+
+// Mis clases.
+
+import { TypeToast } from '../../../enums/typeToast';
+
+import { Response } from '../../../interfaces/response';
+
+import { GlobalService } from '../../../services/global/global.service';
+import { SessionService } from '../../../services/session/session.service';
+
 @Component({
   selector: 'app-session',
   standalone: true,

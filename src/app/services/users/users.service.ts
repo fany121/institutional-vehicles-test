@@ -66,6 +66,25 @@ export class UsersService {
   //   return this._http.get<Response>(`${url}`, {responseType: 'json'});
   // }
 
+  public listUserView(): Observable<Response> {
+    let url: string = `${this._globalService.url}/users/list-user-view`;
+
+    return this._http.get<Response>(`${url}`, {responseType: 'json'});
+  }
+
+
+  public listUserUser(): Observable<Response> {
+    let url: string = `${this._globalService.url}/users/list-user-user`;
+
+    return this._http.get<Response>(`${url}`, {responseType: 'json'});
+  }
+
+  public listUserAdmin(): Observable<Response> {
+    let url: string = `${this._globalService.url}/users/list-user-admin`;
+
+    return this._http.get<Response>(`${url}`, {responseType: 'json'});
+  }
+
   /**
    * 
    * Método que consulta a la API REST mediante petición HTTP, la crearción de un registro nuevo de tipo Usuario.
