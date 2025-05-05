@@ -56,7 +56,7 @@ export class AppComponent implements AfterViewInit {
    * 
    */
    public closeToast(): void {
-    // this._globalService.closeToast();
+    this._globalService.closeToast();
   }
 /**
    * 
@@ -64,7 +64,7 @@ export class AppComponent implements AfterViewInit {
    * 
    */
   public closeModal(): void {
-    // this._globalService.closeModal();
+    this._globalService.closeModal();
   }
 }
 
