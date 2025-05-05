@@ -3,10 +3,9 @@ import { RouterOutlet } from '@angular/router';
 
 // Mis clases.
 
-// import { GlobalService } from './services/global/global.service';
+import { GlobalService } from './services/global/global.service';
 
 @Component({
-  standalone: true,
   selector: 'app-root',
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
@@ -15,7 +14,7 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent implements AfterViewInit {
   // Este método es requerido por la interfaz AfterViewInit
-  public title: string = 'Soporte Técnico';
+  public title: string = 'Vehiculos Institucionales';
   @ViewChild('toast') toastElement!: ElementRef;
   @ViewChild('toastProgress') toastProgressElement!: ElementRef;
   @ViewChild('modal') modalElement!: ElementRef;
@@ -29,12 +28,12 @@ export class AppComponent implements AfterViewInit {
    * 
    */
    public constructor(
-    // private _globalService: GlobalService
+    private _globalService: GlobalService
   ) { }
 
   public ngAfterViewInit(): void {
-    // this._globalService.setToastElement(this.toastElement.nativeElement, this.toastProgressElement.nativeElement);
-    // this._globalService.setModalElement(this.modalElement.nativeElement, this.modalContentElement);
+    this._globalService.setToastElement(this.toastElement.nativeElement, this.toastProgressElement.nativeElement);
+    this._globalService.setModalElement(this.modalElement.nativeElement, this.modalContentElement);
   }
    /**
    * 

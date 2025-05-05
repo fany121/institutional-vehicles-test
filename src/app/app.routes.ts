@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
-import { SessionComponent } from './components/screens/session/session.component';
-import { PanelComponent } from './components/screens/panel/panel.component';
 // Mis clases.
 
-// import { authenticationGuard, authenticationGuardChild } from './guardians/authentication/authentication.guard';
-// import { roleAdministratorGuard } from './guardians/roles/role-administrator/role-administrator.guard';
-// import { roleTechnicianGuard } from './guardians/roles/role-technician/role-technician.guard';
+import { authenticationGuard, authenticationGuardChild } from './guardians/authentication/authentication.guard';
+import { roleAdministratorGuard } from './guardians/roles/role-administrator/role-administrator.guard';
+import { roleUserGuard } from './guardians/roles/role-user/role-user.guard';
+import { roleViewGuard } from './guardians/roles/role-view/role-view.guard';
 
-
+import { SessionComponent } from './components/screens/session/session.component';
+import { PanelComponent } from './components/screens/panel/panel.component';
 // import { PanelComponent } from './components/screens/panel/panel.component';
 // import { StatisticsComponent } from './components/screens/statistics/statistics.component';
 // import { ListTicketsComponent } from './components/screens/tickets/list-tickets/list-tickets.component';
