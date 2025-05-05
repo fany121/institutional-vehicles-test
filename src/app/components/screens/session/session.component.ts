@@ -15,16 +15,17 @@ import { SessionService } from '../../../services/session/session.service';
 
 @Component({
   selector: 'app-session',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './session.component.html',
-  styleUrls: ['./session.component.css']
+  styleUrl: './session.component.css'
 })
 export class SessionComponent {
   public title: string = 'SESIÓN';
   public form: FormGroup;
   public isLoading: boolean = false;
 
+
+  
   constructor(
     private _formBuilder: FormBuilder,
     private _router: Router

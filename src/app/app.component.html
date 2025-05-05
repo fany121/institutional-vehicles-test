@@ -1,1 +1,36 @@
-<router-outlet></router-outlet>
+<!-- Mensaje de notificacion -->
+<div #toast class="toast">
+    <div class="toast-content">
+        <!-- Icono del mensaje -->
+        <div class="check">
+            <ion-icon class="icon" name="checkmark"></ion-icon>
+        </div>
+        <!-- Texto del mensaje -->
+        <div class="message">
+            <!-- Titulo -->
+            <span class="text text-1"></span>
+            <!-- Cuerpo -->
+            <span class="text text-2"></span>
+        </div>
+    </div>
+    <!-- Boton para cerrar -->
+    <ion-icon (click)="closeToast()" class="close" name="close-circle"></ion-icon>
+    <!-- Barra de progreso -->
+    <div #toastProgress class="progress"></div>
+  </div>
+  
+  <!-- Alerta Modal -->
+  <div #modal class="generic-modal">
+    <div class="modal-body">
+        <div #modalContent class="close" (click)="closeModal();">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+    </div>
+  </div>
+  
+  <header></header>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+  <footer></footer>
+  

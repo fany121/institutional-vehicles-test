@@ -18,7 +18,7 @@ export class AppComponent implements AfterViewInit {
   @ViewChild('toast') toastElement!: ElementRef;
   @ViewChild('toastProgress') toastProgressElement!: ElementRef;
   @ViewChild('modal') modalElement!: ElementRef;
-  @ViewChild('modalContent', { read: ViewContainerRef, static: true }) modalContentElement!: ViewContainerRef;
+  @ViewChild('modalContent') modalContentElement!: ElementRef;
 
    /**
    * 
@@ -32,8 +32,23 @@ export class AppComponent implements AfterViewInit {
   ) { }
 
   public ngAfterViewInit(): void {
-    this._globalService.setToastElement(this.toastElement.nativeElement, this.toastProgressElement.nativeElement);
-    this._globalService.setModalElement(this.modalElement.nativeElement, this.modalContentElement);
+    if (
+      this.toastElement &&
+      this.toastProgressElement &&
+      this.modalElement &&
+      this.modalContentElement
+    ) {
+      this._globalService.setToastElement(
+        this.toastElement.nativeElement,
+        this.toastProgressElement.nativeElement
+      );
+      this._globalService.setModalElement(
+        this.modalElement.nativeElement,
+        this.modalContentElement.nativeElement
+      );
+    } else {
+      console.warn('Algún elemento no fue encontrado en el DOM');
+    }
   }
    /**
    * 
