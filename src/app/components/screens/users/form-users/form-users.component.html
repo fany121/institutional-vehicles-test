@@ -1,132 +1,130 @@
 <div class="container">
     <div class="header">
         <div class="logo">
-            <h1>{{ title }}</h1>
+            <!-- <h1>{{ title }}</h1> -->
         </div>
     </div>
     <div class="form-title">
         <p>Formulario de Usuario</p>
     </div>
-    <form class="form-container" [formGroup]="form">
+    <form class="form-container" >
         <div class="form-body">
-            <div class="row" *ngIf="typeForm != 'UPDATE_PASSWORD'">
+            <div class="row" >
                 <div class="column w100">
                     <div class="form-element">
                         <div class="element-title">
                             <p>Nombre de la persona:</p>
                         </div>
                         <div class="input-field">
-                            <input type="text" formControlName="full_name" maxlength="60" autocomplete="off">
+                            <input type="text"  maxlength="60" autocomplete="off">
                         </div>
-                        <div *ngIf="form.get('full_name')!.touched && form.get('full_name')!.invalid">
-                            <span class="alert" *ngIf="form.get('full_name')!.errors?.['required']">Ingrese el nombre completo de la persona.</span>
+                        <div >
+                            <!-- <span class="alert" >Ingrese el nombre completo de la persona.</span> -->
                         </div>
+
                     </div>
                 </div>
             </div>
-            <div class="row" *ngIf="typeForm == 'CREATE'">
+           <div class="row" >
                 <div class="column w100">
                     <div class="form-element">
                         <div class="element-title">
                             <p>Usuario:</p>
                         </div>
                         <div class="input-field">
-                            <input type="text" formControlName="user" maxlength="20" autocomplete="off" oninput="value = value.toUpperCase();">
+                            <input type="text"  maxlength="20" autocomplete="off" oninput="value = value.toUpperCase();">
                         </div>
-                        <div *ngIf="form.get('user')!.touched && form.get('user')!.invalid">
-                            <span class="alert" *ngIf="form.get('user')!.errors?.['required']">Ingrese el nombre de usuario único.</span>
+                        <div >
+                            <!-- <span class="alert" *ngIf="form.get('user')!.errors?.['required']">Ingrese el nombre de usuario único.</span> -->
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row" *ngIf="typeForm != 'UPDATE_PASSWORD'">
+            <div class="row" >
                 <div class="column w100">
                     <div class="form-element">
                         <div class="element-title">
                             <p>Correo electrónico:</p>
                         </div>
                         <div class="input-field">
-                            <input type="email" formControlName="email" maxlength="99" autocomplete="off">
+                            <input type="email"  maxlength="99" autocomplete="off">
                         </div>
-                        <div *ngIf="form.get('email')!.touched && form.get('email')!.invalid">
-                            <span class="alert" *ngIf="form.get('email')!.errors?.['required']">Ingrese el correo electrónico.</span>
-                            <span class="alert" *ngIf="form.get('email')!.errors?.['email']">Ingrese un correo válido.</span>
+                        <div >
+                            <!-- <span class="alert" *ngIf="form.get('email')!.errors?.['required']">Ingrese el correo electrónico.</span>
+                            <span class="alert" *ngIf="form.get('email')!.errors?.['email']">Ingrese un correo válido.</span> -->
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row" *ngIf="typeForm == 'UPDATE_PASSWORD'">
+            <div class="row" >
                 <div class="column w100">
                     <div class="form-element">
                         <div class="element-title">
                             <p>Contraseña actual:</p>
                         </div>
                         <div class="input-field">
-                            <input type="password" formControlName="password_current" maxlength="20" autocomplete="off">
+                            <input type="password"  maxlength="20" autocomplete="off">
                         </div>
-                        <div *ngIf="form.get('password_current')!.touched && form.get('password_current')!.invalid">
-                            <span class="alert" *ngIf="form.get('password_current')!.errors?.['required']">Ingrese su contraseña actual</span>
+                        <div >
+                            <!-- <span class="alert" *ngIf="form.get('password_current')!.errors?.['required']">Ingrese su contraseña actual</span> -->
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row" *ngIf="typeForm == 'CREATE' || typeForm == 'UPDATE_PASSWORD'">
+            <div class="row" >
                 <div class="column w100">
                     <div class="form-element">
                         <div class="element-title">
                             <p>Contraseña:</p>
                         </div>
                         <div class="input-field">
-                            <input type="password" formControlName="password" maxlength="20" autocomplete="off">
+                            <input type="password"  maxlength="20" autocomplete="off">
                         </div>
-                        <div *ngIf="form.get('password')!.touched && form.get('password')!.invalid">
-                            <span class="alert" *ngIf="form.get('password')!.errors?.['required']">Ingrese una contraseña</span>
+                        <div >
+                            <!-- <span class="alert" *ngIf="form.get('password')!.errors?.['required']">Ingrese una contraseña</span> -->
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row" *ngIf="typeForm == 'CREATE' || typeForm == 'UPDATE_PASSWORD'">
+            <div class="row" >
                 <div class="column w100">
                     <div class="form-element">
                         <div class="element-title">
                             <p>Confirmar contraseña:</p>
                         </div>
                         <div class="input-field">
-                            <input type="password" formControlName="password_confirmation" maxlength="20" autocomplete="off">
+                            <input type="password"  maxlength="20" autocomplete="off">
                         </div>
-                        <div *ngIf="form.get('password_confirmation')!.touched && form.get('password_confirmation')!.invalid">
-                            <span class="alert" *ngIf="form.get('password_confirmation')!.errors?.['required']">Reescriba la contraseña</span>
-                            <span class="alert" *ngIf="form.get('password_confirmation')!.errors?.['passwordConfirmation']">Las contraseñas no coinciden</span>
+                        <div >
+                            <!-- <span class="alert" *ngIf="form.get('password_confirmation')!.errors?.['required']">Reescriba la contraseña</span>
+                            <span class="alert" *ngIf="form.get('password_confirmation')!.errors?.['passwordConfirmation']">Las contraseñas no coinciden</span> -->
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row" *ngIf="typeForm != 'UPDATE_PASSWORD'">
+            <div class="row" >
                 <div class="column w100">
                     <div class="form-element">
                         <div class="element-title">
-                            <p>{{ typeForm == 'CREATE' ?  'Seleccionar rol:' : 'Rol:'}}</p>
+                            seleccionar rol <!-- <p>{{ typeForm == 'CREATE' ?  'Seleccionar rol:' : 'Rol:'}}</p> -->
                         </div>
                         <div class="input-field">
-                            <ng-select
-                                formControlName="id_role" 
-                                [virtualScroll]="true"
-                                (change)="onChangeSelectRole($event)" 
-                                (clear)="onClearSelectRole()"
-                            >
-                                <ng-option *ngFor="let role of roles" [value]="role.id_role">{{ role.role.toLocaleUpperCase() }}</ng-option>
-                            </ng-select>
+                            <select name="rol" id="rol" class="select" >
+                                <option value="" disabled selected>Seleccione un rol</option>
+                                <option value="1">Administrador</option>
+                                <option value="2">Usuario</option>
+                            </select>
                         </div>
-                        <div *ngIf="form.get('id_role')!.touched && form.get('id_role')!.invalid">
-                            <span class="alert" *ngIf="form.get('id_role')!.errors?.['required']">Seleccione un rol</span>
+                        <div >
+                            <!-- <span class="alert" >Seleccione un rol</span> -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="button-zone" *ngIf="typeForm != 'READ'">
-            <button (click)="saveUser()">{{ typeForm == 'CREATE' ? 'Guardar usuario' : typeForm == 'UPDATE' ? 'Editar usuario' : 'Editar contraseña' }}</button>
-            <button class="back" (click)="decline();">Cancelar</button>
+        <div class="button-zone" >
+            <button > cambiar Contraseña</button>
+            <button class="back" >Cancelar</button>
         </div>
     </form>
 </div>

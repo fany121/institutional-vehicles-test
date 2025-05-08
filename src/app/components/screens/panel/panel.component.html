@@ -1,1 +1,97 @@
-<p>panel works!</p>
+<!-- Menú lateral -->
+<nav #sidebar class="sidebar close">
+    <!-- Encabezado del menú -->
+    <header>
+        <!-- Información del Sistema -->
+        <div class="logo-div">
+            <span class="logo">
+                <img src="images/SITB.svg">
+            </span>
+
+            <div class="text-header">
+                <span class="text title">Soporte Técnico</span>
+            </div>
+        </div>
+        <!-- Botón del Menú -->
+        <div (click)="toggleSidebar();" class="menu-icon">
+            <i class="fa-solid fa-caret-right"></i>
+        </div>
+        <!-- Informacion del Usuario -->
+        <div class="user-rol" (click)="navigateTo('edit-user')">
+            <div class="user-icon">
+                <i class="fa-solid fa-user"></i>
+                <p id="user-abr">{{ userNameAbreviation }}</p>
+            </div>
+            <div class="info-container">
+                <div class="user-info">
+                    <span id="user-full">{{ userNameFull }}</span>
+                </div>
+            </div>
+            <div class="user-text">
+                <span id="user-short">{{ userNameShort }}</span>
+            </div>
+        </div>
+    </header>
+    <!-- Opciones del Menú -->
+    <div class="menu-bar">
+        <div class="menu">
+            <ul class="elementos">
+                <li [ngClass]="{active: isActive('statistics')}" (click)="navigateTo('statistics')" *appHasRole="{roles: [1]}" class="element-link">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span class="menu-text">Estadísticas</span>
+                    <div class="tooltip"><p>Estadísticas</p></div>
+                </li>
+                <li [ngClass]="{active: isActive('users')}" (click)="navigateTo('users')" *appHasRole="{roles: [1]}" class="element-link">
+                    <i class="fa-solid fa-users"></i>
+                    <span class="menu-text">Gestión de Usuarios</span>
+                    <div class="tooltip"><p>Gestión de Usuarios</p></div>
+                </li>
+                <li [ngClass]="{active: isActive('tickets')}" (click)="navigateTo('tickets')" class="element-link">
+                    <i class="fa-solid fa-ticket"></i>
+                    <span class="menu-text">Gestión de Tickets</span>
+                    <div class="tooltip"><p>Gestión de Tickets</p></div>
+                </li>
+                <li [ngClass]="{active: isActive('history')}" (click)="navigateTo('history')" *appHasRole="{roles: [1]}" class="element-link">
+                    <i class="fa-solid fa-history"></i>
+                    <span class="menu-text">Historial de Tickets</span>
+                    <div class="tooltip"><p>Historial de Tickets</p></div>
+                </li>
+                <li [ngClass]="{active: isActive('my-tickets')}" (click)="navigateTo('my-tickets')" *appHasRole="{roles: [2]}" class="element-link">
+                    <i class="fa-solid fa-clipboard"></i>
+                    <span class="menu-text">Historial de Tickets</span>
+                    <div class="tooltip"><p>Historial de Tickets</p></div>
+                </li>
+                <li (click)="dowloadUserManual()" class="element-link">
+                    <i class="fa-solid fa-file-circle-exclamation"></i>
+                    <span class="menu-text">Manual de Usuario</span>
+                    <div class="tooltip"><p>Manual de Usuario</p></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Botón para cerrar sesión -->
+    <div class="bottom-content">
+        <li class="element-link" (click)="logout();">
+            <i class="fa-solid fa-power-off"></i>
+            <span class="menu-text">Cerrar Sesión</span>
+        </li>
+    </div>
+</nav>
+
+<!-- Cuerpo de la página -->
+<section class="home">
+    <!-- Logo SIT de fondo -->
+    <div #logo class="homeLogo blur">
+        <img src="images/SITRED.svg">
+    </div>
+    <!-- Contenido -->
+    <div class="content">
+        <div class="body">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <span>© SIT {{ year }}</span>
+    </footer>
+</section>

@@ -8,6 +8,10 @@ import { roleViewGuard } from './guardians/roles/role-view/role-view.guard';
 
 import { SessionComponent } from './components/screens/session/session.component';
 import { PanelComponent } from './components/screens/panel/panel.component';
+import { ListVehiclesComponent } from './components/screens/vehicles/list-vehicles/list-vehicles.component';
+import { FormUsersComponent } from './components/screens/users/form-users/form-users.component';
+import { ListUsersComponent } from './components/screens/users/list-users/list-users.component';
+
 // import { PanelComponent } from './components/screens/panel/panel.component';
 // import { StatisticsComponent } from './components/screens/statistics/statistics.component';
 // import { ListTicketsComponent } from './components/screens/tickets/list-tickets/list-tickets.component';
@@ -22,6 +26,12 @@ export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: SessionComponent },
     { path: 'panel', component: PanelComponent },
+    { path: 'vehicles', component: ListVehiclesComponent },
+    //crear usuario para el rol de administrador
+    { path: 'create-user', component:  FormUsersComponent },
+    { path: 'users', component:  ListUsersComponent },
+
+
     { path: '**', redirectTo: 'login' }
     // { 
     //     path: 'panel', 

@@ -32,6 +32,7 @@
     "ngx-stars": "^1.6.5",
     "pdfmake": "^0.2.18",
     "rxjs": "~7.8.0",
+    "tickets": "file:",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },
