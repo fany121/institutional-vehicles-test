@@ -29,35 +29,35 @@ import { ListUsersComponent } from './components/screens/users/list-users/list-u
 //     { path: 'panel', component: PanelComponent },
 //     { path: 'list-vehicles', component: ListVehiclesComponent },
 //     { path: 'create-vehicles', component: FormVehiclesComponent },
-//     //crear usuario para el rol de administrador
+    //crear usuario para el rol de administrador
 //     { path: 'create-user', component:  FormUsersComponent },
 //     { path: 'users', component:  ListUsersComponent },
 
 
 //     { path: '**', redirectTo: 'login' }
-//     // { 
-//     //     path: 'panel', 
-//     //     component: PanelComponent,
-//     //     canActivate: [authenticationGuard],
-//     //     canActivateChild: [authenticationGuardChild],
-//     //     children: [
-//     //         { path: 'users', component: ListUsersComponent, canActivate: [roleAdministratorGuard] },
-//     //         { path: 'edit-user', component: FormUsersComponent, canActivate: [roleAdministratorGuard] },
-//     //         { path: 'create-user', component: FormUsersComponent, canActivate: [roleAdministratorGuard] },
-//     //         { path: 'see-user', component: FormUsersComponent, canActivate: [roleAdministratorGuard] },
-//     //         { path: 'reset-password', component: FormUsersComponent, canActivate: [roleAdministratorGuard] },
+    // { 
+    //     path: 'panel', 
+    //     component: PanelComponent,
+    //     canActivate: [authenticationGuard],
+    //     canActivateChild: [authenticationGuardChild],
+    //     children: [
+    //         { path: 'users', component: ListUsersComponent, canActivate: [roleAdministratorGuard] },
+    //         { path: 'edit-user', component: FormUsersComponent, canActivate: [roleAdministratorGuard] },
+    //         { path: 'create-user', component: FormUsersComponent, canActivate: [roleAdministratorGuard] },
+    //         { path: 'see-user', component: FormUsersComponent, canActivate: [roleAdministratorGuard] },
+    //         { path: 'reset-password', component: FormUsersComponent, canActivate: [roleAdministratorGuard] },
 
-//     //         { path: 'tickets', component: ListTicketsComponent },
-//     //         { path: 'my-tickets', component: ListTicketsComponent, canActivate: [roleTechnicianGuard] },
-//     //         { path: 'history', component: ListTicketsComponent, canActivate: [roleAdministratorGuard] },
-//     //         { path: 'edit-ticket', component: FormTicketsComponent, canActivate: [roleAdministratorGuard] },
-//     //         { path: 'create-ticket', component: FormTicketsComponent, canActivate: [roleAdministratorGuard] },
-//     //         { path: 'see-ticket', component: FormTicketsComponent },
-//     //         { path: 'report', component: ReportTicketsComponent, canActivate: [roleAdministratorGuard] },
+    //         { path: 'tickets', component: ListTicketsComponent },
+    //         { path: 'my-tickets', component: ListTicketsComponent, canActivate: [roleTechnicianGuard] },
+    //         { path: 'history', component: ListTicketsComponent, canActivate: [roleAdministratorGuard] },
+    //         { path: 'edit-ticket', component: FormTicketsComponent, canActivate: [roleAdministratorGuard] },
+    //         { path: 'create-ticket', component: FormTicketsComponent, canActivate: [roleAdministratorGuard] },
+    //         { path: 'see-ticket', component: FormTicketsComponent },
+    //         { path: 'report', component: ReportTicketsComponent, canActivate: [roleAdministratorGuard] },
 
-//     //         { path: 'statistics', component: StatisticsComponent, canActivate: [roleAdministratorGuard] }
-//     //     ]
-//     // },
+    //         { path: 'statistics', component: StatisticsComponent, canActivate: [roleAdministratorGuard] }
+    //     ]
+    // },
     
 // ];
 export const routes: Routes = [

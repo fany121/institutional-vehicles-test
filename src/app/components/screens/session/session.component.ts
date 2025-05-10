@@ -21,6 +21,22 @@ import { SessionService } from '../../../services/session/session.service';
 })
 
 
+
+
+
+
+export class SessionComponent {
+
+
+
+
+
+
+  public title: string = 'SESIÓN';
+  public form: FormGroup;
+  public year: number = new Date().getFullYear();
+  public isLoading: boolean = false;
+
   /**
    * 
    * Configuración del componente.
@@ -32,19 +48,6 @@ import { SessionService } from '../../../services/session/session.service';
    * 
    */
 
-
-
-export class SessionComponent {
-
-
-
-  public title: string = 'SESIÓN';
-  public form: FormGroup;
-  // public year: number;
-  public isLoading: boolean = false;
-
-
-
   public constructor(
     private _globalService: GlobalService, 
     private _sessionService: SessionService, 
@@ -55,7 +58,7 @@ export class SessionComponent {
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
-    // this.year = this._globalService.getYear();
+    this.year = this._globalService.getYear();
 
     if (_sessionService.getCurrentUser()) {
       _router.navigate(['/panel']);
