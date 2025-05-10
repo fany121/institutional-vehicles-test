@@ -31,7 +31,6 @@ import { FormUsersComponent } from '../form-users/form-users.component';
 @Component({
   selector: 'app-list-users',
   imports: [ FormsModule ],
-  providers: [DatePipe],
   templateUrl: './list-users.component.html',
   styleUrl: './list-users.component.css'
 })

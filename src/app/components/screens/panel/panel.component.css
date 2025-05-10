@@ -1,0 +1,668 @@
+/* Menu lateral */
+.sidebar
+{
+    position: fixed;
+    top: 20px;
+    left: 0px;
+    height: calc(100% - 40px);
+    width: 270px;
+    background: var(--sit1);
+    box-shadow: var(--shadow);
+    border-radius: 0px 15px 15px 0px;
+    padding-top: 15px;
+    transition: var(--transicion2);
+    z-index: 10;
+}
+.sidebar.close
+{
+    width: 78px;
+}
+
+/* Cabecera del menu lateral */
+.sidebar header
+{
+    position: relative;
+}
+.sidebar header .logo-div
+{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    padding: 0px 10px;
+}
+
+/* Logo del sistema */
+.sidebar .logo
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 55px;
+    min-height: 45px;
+}
+.sidebar .logo-div img
+{
+    width: 45px;
+}
+
+/* Titulo del sistema */
+.sidebar .logo-div .text-header
+{
+    display: flex;
+    flex-direction: column;
+}
+.sidebar .text
+{
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    transition: all 2s ease;
+    white-space: nowrap;
+    opacity: 1;
+}
+
+/* Icono para desplegar y ocultar menu */
+.sidebar header .menu-icon
+{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 3px solid var(--sit1);
+    background: var(--white);
+    width: 35px;
+    height: 35px;
+    top: 22px;
+    right: -19px;
+    transition: var(--transicion2);
+    cursor: pointer;
+}
+.sidebar header .menu-icon i
+{
+    color: var(--sit1);
+    font-size: 1.5rem;
+}
+
+.sidebar.close .menu-icon
+{
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.sidebar .menu-icon
+{
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Informacion del usuario */
+.user-rol
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* Icono de usuario */
+.user-rol .user-icon
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--white);
+    margin-bottom: 3px;
+    font-size: 20px;
+    color: var(--sit1);
+    z-index: 7;
+}
+
+.user-rol .user-icon p
+{
+    font-weight: 500;
+}
+
+.sidebar .user-rol .user-icon p
+{
+    display: none;
+}
+
+.sidebar .user-rol .user-icon i
+{
+    display: flex;
+}
+
+.sidebar.close .user-rol .user-icon p
+{
+    display: flex;
+}
+
+.sidebar.close .user-rol .user-icon i
+{
+    display: none;
+}
+
+/* Usuario */
+.user-rol .user-text
+{
+    display: flex;
+    text-align: center;
+    max-height: 18px;
+    overflow: hidden;
+}
+.user-rol .user-text span
+{
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--white);
+    transition: var(--transicion2);
+}
+
+.sidebar .user-text span
+{
+    opacity: 1;
+}
+
+.sidebar.close .user-text span
+{
+    opacity: 0;
+}
+
+/* Nombre del usuario */
+.user-rol .info-container
+{
+    position: unset;
+    transform: translateX(45%);
+    width: 100%;
+    height: 80px;
+    display: none;
+    align-items: center;
+    justify-content: left;
+    transition: .5s;
+}
+.sidebar.close .user-rol:hover .info-container
+{
+    transform: translateX(0%);
+    transition: 1s;
+}
+
+.user-rol .user-info
+{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 70px;
+    border: 2px solid var(--white);
+    z-index: 4;
+    background: var(--sit1);
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.287);
+    transition: transform .5s, width .5s, height .5s, z-index .2s;
+    transition-delay: 1s, .5s, .5s, 1s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    padding: 3px;
+    overflow: hidden;
+    z-index: 5;
+}
+.user-rol .user-info span
+{
+    color: var(--white);
+    font-size: 18px;
+    font-weight: 600;
+    opacity: 0;
+    visibility: hidden;
+    transition: .0s;
+    transition-delay: .0s;
+}
+.sidebar.close .user-rol:hover .user-info
+{
+    width: 165px;
+    height: 35px;
+    transform: translateX(90px);
+    transition: transform .5s, width .5s, height .5s, z-index .2s;
+    transition-delay: 0s, .5s, .5s, .2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    padding: 9px;
+}
+.sidebar.close .user-rol:hover .user-info span
+{
+    opacity: 1;
+    visibility: visible;
+    white-space: nowrap;
+    transform: translateY(0px);
+    transition-delay: 1s;
+    font-size: 14px;
+}
+
+/* Opciones del menu */
+.sidebar .menu-bar
+{
+    position: relative;
+    width: 270px;
+    height: calc(100% - 221px);
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-x: visible;
+}
+
+.sidebar.close .menu-bar
+{
+    width: 78px;
+}
+
+.sidebar.close .menu-bar:hover
+{
+    width: 350px;
+}
+
+.sidebar .menu-bar::-webkit-scrollbar 
+{
+    display: none;
+}
+
+.sidebar .menu-bar .menu
+{
+    max-width: 270px;
+    padding: 0 10px;
+    padding-bottom: 10px;
+    transition: var(--transicion2);
+}
+
+.sidebar.close .menu-bar .menu
+{
+    max-width: 78px;
+}
+
+/* Elemento del menu */
+.sidebar li
+{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin-top: 10px;
+    list-style: none;
+    cursor: pointer;
+    border-radius: 6px;
+}
+.sidebar li i
+{
+    min-width: 50px;
+    font-size: 25px;
+    width: auto;
+    transition: all .4s ease;
+    text-align: center;
+}
+.sidebar.close li i
+{
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
+}
+.sidebar li .menu-text
+{
+    width: 100%;
+    transition: all .1s ease;
+    transition-delay: .2s;
+    white-space: normal;
+    opacity: 1;
+}
+.sidebar li i,
+.sidebar li span
+{
+    color: var(--white);
+}
+
+/* Elemento activo del menu */
+.sidebar li.active
+{
+    background: var(--white);
+    transition: all .3s ease;
+}
+.sidebar li.active i,
+.sidebar li.active span
+{
+    color: var(--black);
+}
+.sidebar li.active:hover
+{
+    background: var(--white);
+}
+.sidebar li.active:hover i,
+.sidebar li.active:hover span
+{
+    color: var(--black);
+}
+
+
+/* Elemento con accion hover */
+.sidebar li:hover
+{
+    background: var(--sit2);
+    transition: all .3s ease;
+}
+.sidebar li:hover i,
+.sidebar li:hover span
+{
+    color: var(--white);
+    transition: all .3s ease;
+}
+
+/* Elementos cuando el menu se encuentra cerrado */
+.sidebar.close .text,
+.sidebar.close .menu-text
+{
+    opacity: 0;
+    width: 0;
+    transition: all .0s ease;
+    transition-delay: 0s;
+    display: none;
+}
+
+.sidebar li .tooltip
+{
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    padding: 10px;
+    background: white;
+    box-shadow: var(--shadow);
+    border-radius: 10px;
+    transition: all .5s ease-in-out;
+}
+
+.sidebar li .tooltip p
+{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.sidebar.close li:hover .tooltip
+{
+    display: flex;
+    animation: tooltip .5s ease-in-out;
+    transform: translateX(78px); 
+    z-index: 1;
+}
+
+@keyframes tooltip
+{
+    0% { 
+        opacity: 0;
+        transform: translateX(0px); 
+        z-index: -1;
+    }
+    80% {
+        opacity: 1;
+        transform: translateX(88px); 
+    }
+    100% {
+        transform: translateX(78px); 
+        z-index: 0;
+    }
+}
+
+/* Opcion cerrar sesion */
+.bottom-content
+{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: block;
+    padding: 15px 10px;
+    overflow: hidden;
+}
+
+.bottom-content .bottom-logo
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.sidebar .bottom-content .bottom-logo img
+{
+
+    width: 100%;
+    max-width: 70px;
+    height: auto;
+    max-height: 70px;
+    border-radius: 50%;
+    animation: animate-color 3s ease alternate infinite;
+    border: 2px solid currentColor;
+    transition: all .4s ease;
+}
+
+.sidebar.close .bottom-content .bottom-logo img
+{
+    max-width: 45px;
+    max-height: 45px;
+}
+
+/* Cuerpo de la pagina */
+.home
+{
+    position: absolute;
+    overflow: hidden;
+    min-height: 100vh;
+    height: 0;
+    left: 270px;
+    width: calc(100% - 270px);
+    transition: var(--transicion2);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+}
+.sidebar.close ~ .home
+{
+    left: 78px;
+    width: calc(100% - 78px);
+}
+
+/* Logo principal de la pagina */
+.home .homeLogo
+{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transition: var(--transicion);
+}
+.home .homeLogo img
+{
+    position: relative;
+    object-fit: cover;
+    width: auto;
+    height: 60%;
+    max-height: 220px;
+}
+
+/* Logo con efecto de difuminado */
+.home .homeLogo.blur
+{
+    filter: blur(9px);
+    opacity: .3;
+}
+
+/* Contenido */
+.content
+{
+    position: absolute;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    max-height: 1000px;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+}
+
+.content.blur
+{
+    filter: blur(3px);
+}
+
+/* Cuerpo del contenido */
+.content .body
+{
+    position: relative;
+    width: 100%;
+    transition: .8s ease-in-out;
+    transform: translateX(0%);
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+    pointer-events: all;    
+}
+.content .body::-webkit-scrollbar {
+    display: none;
+}
+.content .body.hide
+{
+    transform: translateX(-600%);
+}
+.content .body.close
+{
+    width: 290px;
+    overflow: hidden;
+    height: 100px;
+}
+
+.container.blur
+{
+    filter: blur(3px);
+}
+
+/* Estilo cuando lo cargado en el body es un menú de opciones */
+.content .body.menu
+{
+    height: auto;
+    max-height: 80%;
+}
+
+/* Efecto de busqueda al contenido */
+.content .body.close.search
+{
+    animation: animate-opacity .6s ease alternate infinite;
+    pointer-events: none;
+}
+
+/* Footer de la pagina */
+footer
+{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: -20px;
+    width: 100%;
+    height: 20px;
+    z-index: 1;
+}
+
+footer::after
+{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    border-radius: 20px;
+    background: var(--white);
+    z-index: -1;
+    transition: all .7s ease-in-out;
+    filter: blur(0px);
+    opacity: .0;
+}
+
+footer.blur::after
+{
+    filter: blur(4px);
+    opacity: .35;
+}
+
+footer span
+{
+    color: var(--black);
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+@media (max-width: 550px) {
+    /* Menu lateral */
+    .sidebar
+    {
+        width: calc(100vw - 20px);
+        height: calc(100% - 20px);
+        top: 10px;
+        overflow: hidden;
+    }
+   .sidebar.close
+    {
+        transform: translateX(-88px);
+        overflow: visible;
+    }
+    .sidebar header .menu-icon
+    {
+        right: 4%;
+    }
+    .sidebar.close header .menu-icon
+    {
+        right: -50px;
+    }
+    
+    /* Informacion del usuario */
+    .sidebar.close .user-rol:hover .info-container
+    {
+        transform: translateX(0%);
+    }
+    .sidebar.close .user-rol:hover .user-info
+    {
+        width: 20px;
+        height: 20px;
+        transform: translateX(0px);
+        padding: 0px;
+    }
+    .sidebar.close .user-rol:hover .user-info span
+    {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    /* Contenido de la pagina */
+    .home
+    {
+        left: 0;
+        width: 100%;
+        transform: translateX(500px);
+        transition: all .5s ease;
+        min-height: 0vh;
+        height: 0;
+    }
+    .home .homeLogo img
+    {
+        width: 55%;
+        object-fit: contain;
+    }
+    .sidebar.close ~ .home
+    {
+        left: 0;
+        width: 100%;
+        transform: translateX(0px);
+        transition: all .5s ease;
+        height: 100%;
+    }
+}

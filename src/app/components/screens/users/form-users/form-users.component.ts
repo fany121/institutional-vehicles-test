@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
 // Librerías externas.
 
 import { NgSelectComponent, NgSelectModule } from '@ng-select/ng-select';
@@ -21,7 +21,7 @@ import { UsersService } from '../../../../services/users/users.service';
 
 @Component({
   selector: 'app-form-users',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,FormsModule],
   templateUrl: './form-users.component.html',
   styleUrl: './form-users.component.css'
 })

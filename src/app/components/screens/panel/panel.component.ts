@@ -123,9 +123,9 @@ export class PanelComponent implements OnInit, AfterViewInit {
    * @returns Activo.
    * 
    */
-  public isActive(route: string): boolean {
-    return this._router.url === `/panel/${route}`;
-  }
+  // public isActive(route: string): boolean {
+  //   return this._router.url === `/panel/${route}`;
+  // }
 
   /**
    * 
