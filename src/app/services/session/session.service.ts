@@ -101,10 +101,14 @@ export class SessionService {
    * @returns Observable tipo Response, respuesta positiva (202) o negativa (400).
    * 
    */
-  public logout(): Observable<Response> {
-    let url: string = `${this._globalService.url}/session/logout`;
+  // public logout(): Observable<Response> {
+  //   let url: string = `${this._globalService.url}/session/logout`;
 
-    return this._http.get<Response>(url, {responseType: 'json'});
+  //   return this._http.get<Response>(url, {responseType: 'json'});
+  // }
+   public logout(): Observable<Response> {
+    let url: string = `${this._globalService.url}/session/logout`;
+    return this._http.get<Response>(url, { withCredentials: true });
   }
 
   /**

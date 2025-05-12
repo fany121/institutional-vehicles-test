@@ -58,31 +58,25 @@ export class UsersService {
    * @returns Observable tipo Response, lista de registros tipo Usuario.
    * 
    */
-
-  //no me sirve, talvez listar usuarios
-  // public listTechnicians(): Observable<Response> {
-  //   let url: string = `${this._globalService.url}/users/list-technicians`;
-
-  //   return this._http.get<Response>(`${url}`, {responseType: 'json'});
-  // }
-
-  public listUserView(): Observable<Response> {
-    let url: string = `${this._globalService.url}/users/list-user-view`;
+  public listTechnicians(): Observable<Response> {
+    let url: string = `${this._globalService.url}/users/list-technicians`;
 
     return this._http.get<Response>(`${url}`, {responseType: 'json'});
   }
 
+  /**
+   * 
+   * Método que consulta a la API REST mediante petición HTTP, la lista de colaboradores de un ticket.
+   * 
+   * @param idTicket Identificador del ticket.
+   * @returns Observable tipo Response, lista de registros tipo Usersxticket.
+   * 
+   */
+  public listCollaborators(idTicket: number): Observable<Response> {
+    let url: string = `${this._globalService.url}/usersxtickets/list-by-ticket`;
+    let params: string = `${idTicket}`;
 
-  public listUserUser(): Observable<Response> {
-    let url: string = `${this._globalService.url}/users/list-user-user`;
-
-    return this._http.get<Response>(`${url}`, {responseType: 'json'});
-  }
-
-  public listUserAdmin(): Observable<Response> {
-    let url: string = `${this._globalService.url}/users/list-user-admin`;
-
-    return this._http.get<Response>(`${url}`, {responseType: 'json'});
+    return this._http.get<Response>(`${url}/${params}`, {responseType: 'json'});
   }
 
   /**
@@ -152,8 +146,26 @@ export class UsersService {
    * @returns Observable tipo Response, respuesta afirmativa (202) o negativa (400).
    * 
    */
-  public updatePassword(user: User): Observable<Response> {
-    let url: string = `${this._globalService.url}/users/update-password`;
+  public updatePasswordUser(user: User): Observable<Response> {
+    let url: string = `${this._globalService.url}/users/update-password-user`;
+
+    let result: FormData = new FormData();
+    result.append('id_user', user.id_user.toString());
+    result.append('hash_password', sha256(user.password));
+
+    return this._http.post<Response>(`${url}`, result, {responseType: 'json'});
+  }
+
+  /**
+   * 
+   * Método que consulta a la API REST mediante petición HTTP, la actualización de un registro de tipo Usuario.
+   * 
+   * @param user User.
+   * @returns Observable tipo Response, respuesta afirmativa (202) o negativa (400).
+   * 
+   */
+  public updatePasswordMe(user: User): Observable<Response> {
+    let url: string = `${this._globalService.url}/users/update-password-me`;
 
     let result: FormData = new FormData();
     result.append('id_user', user.id_user.toString());
