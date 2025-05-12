@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder, ReactiveFormsModule, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
-
 
 // Mis clases.
 
@@ -20,22 +18,13 @@ import { SessionService } from '../../../services/session/session.service';
   styleUrl: './session.component.css'
 })
 
-
-
-
-
-
 export class SessionComponent {
 
-
-
-
-
-
   public title: string = 'SESIÓN';
-  public form: FormGroup;
-  public year: number = new Date().getFullYear();
+
   public isLoading: boolean = false;
+  public form: FormGroup;
+  public year: number;
 
   /**
    * 
@@ -47,7 +36,6 @@ export class SessionComponent {
    * @param _formBuilder Inyecta el constructor de formularios de Angular.
    * 
    */
-
   public constructor(
     private _globalService: GlobalService, 
     private _sessionService: SessionService, 
@@ -65,7 +53,7 @@ export class SessionComponent {
     }
   }
 
-/**
+  /**
    * 
    * Método que consulta al servicio SessionService la autenticación de un usuario
    * pasando el nombre de usuario y contraseña al mismo a la API REST.
@@ -73,53 +61,55 @@ export class SessionComponent {
    * a la ventana de Home.
    * 
    */
-public login(): void {
-  this.isLoading = true;
+  public login(): void {
+    this.isLoading = true;
 
-  if (this.form.valid) {
-    this._sessionService.login({
-      id_user: 0,
-      full_name: '',
-      username: this.form.get('username')!.value,
-      password: this.form.get('password')!.value,
-      password_old: '',
-      email: '',
-      date_created: '',
-      hash_username: '',
-      hash_password: '',
-      state: '',
-      role: '',
-      created_by: '',
-      id_state: 0,
-      id_role: 0,
-      id_created_by: 0
-    }).subscribe({
-      next: (value: Response) => {
-        if (value.code == 202) {
-          this._sessionService.setCurrentUser(value.data);
-          this._router.navigate(['/panel']);
-          this._globalService.showToast(this.title, 'Inicio de sesión exitoso.', TypeToast.SUCCESS, 'checkmark-circle');
-        } else if (value.code == 401) {
-          this.isLoading = false;
-          this._globalService.showToast(this.title, 'Usuario o contraseña incorreto, intente de nuevo.', TypeToast.DANGER, 'finger-print');
-        } else {
+    if (this.form.valid) {
+      this._sessionService.login({
+        id_user: 0,
+        full_name: '',
+        username: this.form.get('username')!.value,
+        password: this.form.get('password')!.value,
+        password_old: '',
+        email: '',
+        date_created: '',
+        hash_username: '',
+        hash_password: '',
+        state: '',
+        role: '',
+        created_by: '',
+        id_state: 0,
+        id_role: 0,
+        id_created_by: 0
+      }).subscribe({
+      
+        next: (value: Response) => {
+          if (value.code == 202) {
+            this._sessionService.setCurrentUser(value.data);
+            this._router.navigate(['/panel']);
+            this._globalService.showToast(this.title, 'Inicio de sesión exitoso.', TypeToast.SUCCESS, 'checkmark-circle');
+          } else if (value.code == 401) {
+            this.isLoading = false;
+            this._globalService.showToast(this.title, 'Usuario o contraseña incorreto, intente de nuevo.', TypeToast.DANGER, 'finger-print');
+          } else {
+            this.isLoading = false;
+            this._globalService.showToast(this.title, 'Ha ocurrido un error.', TypeToast.DANGER, 'code-slash');
+          }
+        },
+        error: (error: any) => {
           this.isLoading = false;
           this._globalService.showToast(this.title, 'Ha ocurrido un error.', TypeToast.DANGER, 'code-slash');
         }
-      },
-      error: (error: any) => {
-        this.isLoading = false;
-        this._globalService.showToast(this.title, 'Ha ocurrido un error.', TypeToast.DANGER, 'code-slash');
-      }
-    });
-  } else {
-    Object.keys(this.form.controls).forEach((field: string) => {
-      const control: AbstractControl<any, any> | null = this.form.get<string>(field);
-      if (control && control.invalid) control.markAsTouched({ onlySelf: true });
-    });
+      });
+    } else {
+      Object.keys(this.form.controls).forEach((field: string) => {
+        const control: AbstractControl<any, any> | null = this.form.get<string>(field);
+        if (control && control.invalid) control.markAsTouched({ onlySelf: true });
+      });
 
-    this.isLoading = false;
-    this._globalService.showToast(this.title, 'Formulario incompleto.', TypeToast.DANGER, 'code-slash');
+      this.isLoading = false;
+      this._globalService.showToast(this.title, 'Formulario incompleto.', TypeToast.DANGER, 'code-slash');
+    }
   }
-}
+
 }

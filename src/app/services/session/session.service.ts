@@ -12,7 +12,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { User } from '../../interfaces/user';
 import { Response } from '../../interfaces/response';
-import { Token, isToken } from '../../interfaces/token';
+import { Token } from '../../interfaces/token';
 
 import { GlobalService } from '../global/global.service';
 import { JWT } from '../../interfaces/jwt';
@@ -40,7 +40,7 @@ export class SessionService {
    * @param _jwtService Inyecta el servicio que decodifica tokens JWT.
    * 
    */
-  public constructor(
+ public constructor(
     private _globalService: GlobalService, 
     private _http: HttpClient, 
     private _cookieService: CookieService,
@@ -60,7 +60,7 @@ export class SessionService {
         password_old: '',
         email: '',
         date_created: '',
-        hash_username: '',
+        hash_username: decoded!.hash_username,
         hash_password: '',
         state: '',
         role: '',
@@ -125,12 +125,12 @@ export class SessionService {
    * @param token JWT o undefined dependiendo si se quiere iniciar o borrar una sesión.
    * 
    */
-  public setCurrentUser(token: Token | undefined): void {
+ public setCurrentUser(token: Token | undefined): void {
     let result: User | undefined = undefined;
-
+  
     if (token) {
       const decoded: JWT | null = this.getTokenDecoded(token);
-
+  
       if (decoded) {
         result = {
           id_user: decoded.id_user,
@@ -140,7 +140,7 @@ export class SessionService {
           password_old: '',
           email: '',
           date_created: '',
-          hash_username: '',
+          hash_username: decoded.hash_username,
           hash_password: '',
           state: '',
           role: '',
@@ -154,7 +154,7 @@ export class SessionService {
     } else {
       this._cookieService.delete('institutionalvehicles-user');
     }
-    
+  
     this._currentUserSubject.next(result);
   }
 
@@ -165,9 +165,9 @@ export class SessionService {
    * @returns Cadena del token o null si no existe.
    * 
    */
-  public getTokenCookie(): string | null {
-    return this._cookieService.check('institutionalvehicles-user') ? this._cookieService.get('institutionalvehicles-user') : null;
-  }
+  // public getTokenCookie(): string | null {
+  //   return this._cookieService.check('institutionalvehicles-user') ? this._cookieService.get('institutionalvehicles-user') : null;
+  // }
 
   /**
    * 
@@ -177,11 +177,14 @@ export class SessionService {
    * @returns Token o null si no existe.
    * 
    */
-  public getTokenObject(token: string | null): Token | null {
-    const json: JSON = token ? JSON.parse(token) : null;
+  // public getTokenObject(token: string | null): Token | null {
+  //   const json: JSON = token ? JSON.parse(token) : null;
 
-    return json ? isToken(json) ? json : null : null;
-  }
+  //   return json ? isToken(json) ? json : null : null;
+  // }
+
+
+  
 
   /**
    * 
@@ -211,4 +214,53 @@ export class SessionService {
     return decoded != null && !expiration;
   }
 
+  /**
+   * 
+   * Método que refresca el token para evitar que se cierre la sesión.
+   * 
+   * @returns Observable tipo Response, nuevo token.
+   * 
+   */
+  public refreshToken(): Observable<Response> {
+    let url: string = `${this._globalService.url}/session/refresh`;
+
+    const currentUser: User = this.getCurrentUser()!;
+
+    let result: FormData = new FormData();
+    result.append('id_user', currentUser.id_user.toString());
+    result.append('hash_username', currentUser.hash_username);
+    result.append('full_name', currentUser.full_name);
+    result.append('id_role', currentUser.id_role.toString());
+
+    return this._http.post<Response>(`${url}`, result, {responseType: 'json'});
+  }
+
+
+
+  
+  /**
+   * Obtiene el token de la cookie.
+   */
+  public getTokenCookie(): string | null {
+    return this._cookieService.check('institutionalvehicles-user') 
+      ? this._cookieService.get('institutionalvehicles-user') 
+      : null;
+  }
+
+  /**
+   * Convierte el token almacenado en la cookie a un objeto Token si es válido.
+   */
+  public getTokenObject(token: string | null): Token | null {
+    const json: any = token ? JSON.parse(token) : null;
+
+    return json ? this.isToken(json) ? json : null : null;
+  }
+
+  /**
+   * Verifica si un objeto es de tipo Token.
+   */
+  private isToken(object: any): object is Token {
+    return object !== null && typeof object === 'object' && 'token' in object && 'token_refresh' in object;
+  }
 }
+
