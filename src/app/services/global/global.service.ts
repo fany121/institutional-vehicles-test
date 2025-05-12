@@ -21,7 +21,7 @@ export class GlobalService {
   private modalContentElement!: ViewContainerRef;
 
   public host: string = "http://localhost";
-  public api: string = "institutional-vehicles-api";
+  public api: string = "institutional-vehicles-test-api";
   public url: string = `${this.host}/${this.api}`;
   public dateFormat: string = 'dd/MM/yyyy';
   public timeFormat: string = 'HH:mm:ss';
