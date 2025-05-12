@@ -218,6 +218,7 @@ export class SessionService {
     return decoded != null && !expiration;
   }
 
+  
   /**
    * 
    * Método que refresca el token para evitar que se cierre la sesión.

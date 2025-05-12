@@ -178,8 +178,17 @@ export class PanelComponent implements OnInit, AfterViewInit {
   this._sessionService.logout().subscribe({
     next: (value: Response) => {
       if (value.code === 202) {
+        // Eliminar tokens del localStorage
+        localStorage.removeItem('token');
+        localStorage.removeItem('refresh_token');
+
+        // Limpiar el usuario actual en el servicio
         this._sessionService.setCurrentUser(undefined);
+
+        // Redirigir al login
         this._router.navigate(['/login']);
+
+        // Mostrar notificación
         this._globalService.showToast('Sesión', 'Sesión cerrada.', TypeToast.SUCCESS, 'checkmark-circle');
       } else {
         this._globalService.showToast('Sesión', 'Ha ocurrido un error.', TypeToast.DANGER, 'code-slash');
@@ -190,6 +199,7 @@ export class PanelComponent implements OnInit, AfterViewInit {
     }
   });
 }
+
 
 
   /**
